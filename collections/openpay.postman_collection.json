@@ -1,0 +1,671 @@
+{
+  "item": [
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000001",
+      "name": "Charges",
+      "description": {
+        "content": "Create and manage charges to cards, stores, and banks.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000001",
+          "name": "Create a charge at the merchant level.",
+          "request": {
+            "name": "Create a charge at the merchant level.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "charges"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"card\",\n  \"source_id\": \"{{tokenId}}\",\n  \"amount\": 100,\n  \"currency\": \"MXN\",\n  \"description\": \"Order #1234\",\n  \"device_session_id\": \"{{deviceSessionId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000001",
+          "name": "List charges at the merchant level.",
+          "request": {
+            "name": "List charges at the merchant level.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "charges"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        },
+        {
+          "id": "f1a0c001-0003-4000-8000-000000000001",
+          "name": "Get a charge by id.",
+          "request": {
+            "name": "Get a charge by id.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "charges", "{{transactionId}}"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        },
+        {
+          "id": "f1a0c001-0004-4000-8000-000000000001",
+          "name": "Refund a charge.",
+          "request": {
+            "name": "Refund a charge.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "charges", "{{transactionId}}", "refund"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Customer refund\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0005-4000-8000-000000000001",
+          "name": "Capture a previously authorized charge.",
+          "request": {
+            "name": "Capture a previously authorized charge.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "charges", "{{transactionId}}", "capture"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 100\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000002",
+      "name": "Customers",
+      "description": {
+        "content": "Manage customer records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000002",
+          "name": "Create a customer.",
+          "request": {
+            "name": "Create a customer.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"email\": \"jane@example.com\",\n  \"phone_number\": \"5512345678\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000002",
+          "name": "List customers.",
+          "request": {
+            "name": "List customers.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        },
+        {
+          "id": "f1a0c001-0003-4000-8000-000000000002",
+          "name": "Get a customer by id.",
+          "request": {
+            "name": "Get a customer by id.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        },
+        {
+          "id": "f1a0c001-0004-4000-8000-000000000002",
+          "name": "Update a customer.",
+          "request": {
+            "name": "Update a customer.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"email\": \"jane@example.com\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0005-4000-8000-000000000002",
+          "name": "Delete a customer.",
+          "request": {
+            "name": "Delete a customer.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "DELETE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000003",
+      "name": "Cards",
+      "description": {
+        "content": "Store and manage cards at merchant or customer level.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000003",
+          "name": "Store a card for a customer.",
+          "request": {
+            "name": "Store a card for a customer.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "cards"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token_id\": \"{{tokenId}}\",\n  \"device_session_id\": \"{{deviceSessionId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000003",
+          "name": "List a customer's cards.",
+          "request": {
+            "name": "List a customer's cards.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "cards"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        },
+        {
+          "id": "f1a0c001-0003-4000-8000-000000000003",
+          "name": "Delete a customer's card.",
+          "request": {
+            "name": "Delete a customer's card.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "cards", "{{cardId}}"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "DELETE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000004",
+      "name": "Tokens",
+      "description": {
+        "content": "Client-side tokenization of card data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000004",
+          "name": "Create a card token.",
+          "request": {
+            "name": "Create a card token.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "tokens"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"card_number\": \"4111111111111111\",\n  \"holder_name\": \"Jane Doe\",\n  \"expiration_year\": \"30\",\n  \"expiration_month\": \"12\",\n  \"cvv2\": \"123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000005",
+      "name": "Plans",
+      "description": {
+        "content": "Templates defining amount and frequency for recurring charges.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000005",
+          "name": "Create a plan.",
+          "request": {
+            "name": "Create a plan.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "plans"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Monthly plan\",\n  \"amount\": 150,\n  \"repeat_every\": 1,\n  \"repeat_unit\": \"month\",\n  \"retry_times\": 2,\n  \"status_after_retry\": \"unpaid\",\n  \"trial_days\": 30\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000005",
+          "name": "List plans.",
+          "request": {
+            "name": "List plans.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "plans"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000006",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Associate customers and cards to plans for recurring billing.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000006",
+          "name": "Create a subscription for a customer.",
+          "request": {
+            "name": "Create a subscription for a customer.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "subscriptions"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan_id\": \"{{planId}}\",\n  \"source_id\": \"{{cardId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000006",
+          "name": "List a customer's subscriptions.",
+          "request": {
+            "name": "List a customer's subscriptions.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "subscriptions"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        },
+        {
+          "id": "f1a0c001-0003-4000-8000-000000000006",
+          "name": "Cancel a subscription.",
+          "request": {
+            "name": "Cancel a subscription.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "subscriptions", "{{subscriptionId}}"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "DELETE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000007",
+      "name": "Payouts",
+      "description": {
+        "content": "Send funds to registered bank accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000007",
+          "name": "Create a payout to a registered bank account.",
+          "request": {
+            "name": "Create a payout to a registered bank account.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "payouts"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"bank_account\",\n  \"destination_id\": \"{{bankAccountId}}\",\n  \"amount\": 200,\n  \"description\": \"Vendor payout\",\n  \"order_id\": \"payout-001\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000007",
+          "name": "List a customer's payouts.",
+          "request": {
+            "name": "List a customer's payouts.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "payouts"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000008",
+      "name": "Transfers",
+      "description": {
+        "content": "Move funds between Openpay customers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000008",
+          "name": "Transfer funds from one customer to another.",
+          "request": {
+            "name": "Transfer funds from one customer to another.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "transfers"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"{{destinationCustomerId}}\",\n  \"amount\": 50,\n  \"description\": \"Funds transfer\",\n  \"order_id\": \"transfer-001\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000009",
+      "name": "BankAccounts",
+      "description": {
+        "content": "Manage customer bank accounts used as payout destinations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000009",
+          "name": "Add a bank account to a customer.",
+          "request": {
+            "name": "Add a bank account to a customer.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "bankaccounts"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"012298026516924616\",\n  \"alias\": \"Main account\",\n  \"holder_name\": \"Jane Doe\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000009",
+          "name": "List a customer's bank accounts.",
+          "request": {
+            "name": "List a customer's bank accounts.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "customers", "{{customerId}}", "bankaccounts"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000010",
+      "name": "Fees",
+      "description": {
+        "content": "Charge commission fees to a customer's Openpay balance.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000010",
+          "name": "Charge a commission fee to a customer's balance.",
+          "request": {
+            "name": "Charge a commission fee to a customer's balance.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "fees"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"{{customerId}}\",\n  \"amount\": 12.5,\n  \"description\": \"Marketplace commission\",\n  \"order_id\": \"fee-001\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000010",
+          "name": "List charged fees.",
+          "request": {
+            "name": "List charged fees.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "fees"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f1a0c001-0000-4000-8000-000000000011",
+      "name": "Webhooks",
+      "description": {
+        "content": "Register and manage webhook endpoints for event notifications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a0c001-0001-4000-8000-000000000011",
+          "name": "Register a webhook endpoint.",
+          "request": {
+            "name": "Register a webhook endpoint.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "webhooks"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://example.com/openpay/webhook\",\n  \"user\": \"hookuser\",\n  \"password\": \"hookpass\",\n  \"event_types\": [\"charge.succeeded\", \"charge.refunded\", \"payout.succeeded\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "id": "f1a0c001-0002-4000-8000-000000000011",
+          "name": "List registered webhooks.",
+          "request": {
+            "name": "List registered webhooks.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "webhooks"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET"
+          }
+        },
+        {
+          "id": "f1a0c001-0003-4000-8000-000000000011",
+          "name": "Delete a webhook.",
+          "request": {
+            "name": "Delete a webhook.",
+            "url": {
+              "path": ["v1", "{{merchantId}}", "webhooks", "{{webhookId}}"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "DELETE"
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openpay.mx",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{privateKey}}" },
+      { "key": "password", "value": "" }
+    ]
+  },
+  "info": {
+    "_postman_id": "f1a0c001-0000-4000-8000-0000000000ff",
+    "name": "Openpay API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Openpay online payments platform (BBVA group), scoped per merchant under /v1/{merchant_id}. Auth is HTTP Basic using the merchant private key as the username.\n\nContact Support:\n Name: Openpay Support\n Email: soporte@openpay.mx",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+aid: openpay
+name: Openpay
+review:
+  question: Does Openpay expose a documented public streaming or WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Openpay's only event-delivery mechanism is outbound webhooks: the platform
+    sends HTTP POST notifications to a merchant-registered HTTPS URL when
+    transaction events occur (charge.succeeded, charge.refunded, charge.failed,
+    payout.*, chargeback.*, spei.received, order.*, etc.). This is a
+    server-to-server callback pattern, not a client-consumed streaming channel,
+    and there is no Server-Sent Events (SSE) or WebSocket surface. No AsyncAPI
+    document was created because there is no streaming/eventing protocol to model
+    beyond the webhook callback, which is captured in the OpenAPI Webhooks paths.
+findings:
+  summary: |
+    Openpay does not publish a documented public WebSocket or streaming API. The
+    platform is a conventional REST API scoped per merchant under
+    https://api.openpay.mx/v1/{merchant_id} (and the .co domain for Colombia),
+    authenticated with HTTP Basic auth using the merchant private key. Event
+    notifications are delivered via outbound webhooks (HTTP POST) to a
+    merchant-registered URL, which must be verified on registration using a
+    verification code Openpay sends to the endpoint. There is no documented
+    bidirectional, realtime, or SSE transport.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.openpay.mx/v1
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP POST notifications to a merchant-registered URL; verified via a verification code. Not a client-consumed stream.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Openpay's API reference for charges, payouts, or any other resource.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events streaming endpoint is documented.
+  endpointsConfirmedRest:
+    - POST   https://api.openpay.mx/v1/{merchant_id}/charges
+    - GET    https://api.openpay.mx/v1/{merchant_id}/charges
+    - GET    https://api.openpay.mx/v1/{merchant_id}/charges/{transaction_id}
+    - POST   https://api.openpay.mx/v1/{merchant_id}/charges/{transaction_id}/refund
+    - POST   https://api.openpay.mx/v1/{merchant_id}/charges/{transaction_id}/capture
+    - POST   https://api.openpay.mx/v1/{merchant_id}/customers
+    - GET    https://api.openpay.mx/v1/{merchant_id}/customers
+    - GET    https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}
+    - PUT    https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}
+    - DELETE https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}
+    - POST   https://api.openpay.mx/v1/{merchant_id}/cards
+    - POST   https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/cards
+    - GET    https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/cards
+    - DELETE https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/cards/{card_id}
+    - POST   https://api.openpay.mx/v1/{merchant_id}/tokens
+    - POST   https://api.openpay.mx/v1/{merchant_id}/plans
+    - GET    https://api.openpay.mx/v1/{merchant_id}/plans
+    - PUT    https://api.openpay.mx/v1/{merchant_id}/plans/{plan_id}
+    - DELETE https://api.openpay.mx/v1/{merchant_id}/plans/{plan_id}
+    - POST   https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/subscriptions
+    - GET    https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/subscriptions
+    - DELETE https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/subscriptions/{subscription_id}
+    - POST   https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/bankaccounts
+    - POST   https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/payouts
+    - GET    https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/payouts
+    - POST   https://api.openpay.mx/v1/{merchant_id}/customers/{customer_id}/transfers
+    - POST   https://api.openpay.mx/v1/{merchant_id}/fees
+    - GET    https://api.openpay.mx/v1/{merchant_id}/fees
+    - POST   https://api.openpay.mx/v1/{merchant_id}/webhooks
+    - GET    https://api.openpay.mx/v1/{merchant_id}/webhooks
+    - GET    https://api.openpay.mx/v1/{merchant_id}/webhooks/{webhook_id}
+    - DELETE https://api.openpay.mx/v1/{merchant_id}/webhooks/{webhook_id}
+sources:
+  - url: https://documents.openpay.mx/docs/api
+    type: APIReference
+    note: Per-merchant REST base path; all documented endpoints are HTTPS REST.
+  - url: https://documents.openpay.mx/docs/webhooks.html
+    type: Documentation
+    note: Webhooks are outbound HTTP POST notifications with a verification handshake; not WebSocket.
+  - url: https://docs.openpay.co/en/docs/api/
+    type: APIReference
+    note: Colombia reference mirrors the same resource model on the .co domain.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No streaming or WebSocket protocol surface exists. Event delivery is via
+    outbound webhooks, which are modeled as REST Webhooks paths in the OpenAPI
+    document. No AsyncAPI artifact was authored because there is no SSE or
+    WebSocket transport to describe.

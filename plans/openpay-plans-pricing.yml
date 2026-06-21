@@ -1,0 +1,112 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Openpay
+providerId: openpay
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Payments
+- Fintech
+- Cards
+- SPEI
+- Subscriptions
+- Plans
+description: >-
+  Openpay does not charge for API access; pricing is per-transaction commission
+  based on the payment method. Card payments are billed as a percentage of the
+  transaction plus a fixed per-transaction fee; cash/store (paynet) payments and
+  bank transfers (SPEI) are typically billed as a flat fee per transaction.
+  Exact rates vary by country (Mexico, Colombia), merchant negotiation, volume,
+  and the BBVA group commercial agreement, and are quoted by Openpay sales. The
+  values below are illustrative placeholders and are NOT reconciled against a
+  current published rate card.
+notes: >-
+  Per-transaction commissions must be verified directly with Openpay for the
+  merchant's country and contract. Card percentages and fixed fees, store/cash
+  fees, and SPEI fees change and may be quoted net of or plus local taxes (IVA).
+sources:
+- https://www.openpay.mx
+- https://documents.openpay.mx/docs/api
+plans:
+- id: openpay-standard
+  name: Standard
+  type: usage
+  description: >-
+    Pay-per-transaction commercial model with no monthly platform fee for API
+    access. Commission is charged per successful transaction by payment method.
+  entries:
+  - label: Card Payments (credit/debit)
+    name: card_payments
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: MX
+    unit: 1
+    price: percentage + fixed fee per transaction (contact Openpay)
+    userMultiplied: false
+  - label: Store / Cash Payments (Paynet)
+    name: store_payments
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: MX
+    unit: 1
+    price: flat fee per transaction (contact Openpay)
+    userMultiplied: false
+  - label: Bank Transfer (SPEI)
+    name: spei_payments
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: MX
+    unit: 1
+    price: flat fee per transaction (contact Openpay)
+    userMultiplied: false
+  - label: Payouts (to bank account / CLABE)
+    name: payouts
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: MX
+    unit: 1
+    price: per-payout fee (contact Openpay)
+    userMultiplied: false
+  elements:
+  - name: Charges
+  - name: Customers and Cards
+  - name: Tokens
+  - name: Subscriptions and Plans
+  - name: Payouts and Transfers
+  - name: Fees
+  - name: Webhooks
+- id: openpay-enterprise
+  name: Enterprise / Negotiated
+  type: enterprise
+  description: >-
+    Volume-based and negotiated commission rates for high-volume merchants and
+    marketplaces, arranged through Openpay / BBVA commercial agreements. Contact
+    Openpay sales.
+  entries:
+  - label: Negotiated Commission
+    name: negotiated
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Per-Transaction Rates
+  - name: Marketplace Split Payments
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

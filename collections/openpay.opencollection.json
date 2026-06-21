@@ -1,0 +1,479 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Openpay API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{privateKey}}",
+      "password": ""
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Charges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a charge at the merchant level.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/charges",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"method\": \"card\",\n  \"source_id\": \"{{tokenId}}\",\n  \"amount\": 100,\n  \"currency\": \"MXN\",\n  \"description\": \"Order #1234\",\n  \"device_session_id\": \"{{deviceSessionId}}\"\n}"
+            }
+          },
+          "docs": "Creates a charge against a card, store (cash), or bank (SPEI)."
+        },
+        {
+          "info": {
+            "name": "List charges at the merchant level.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/charges"
+          },
+          "docs": "Returns a paginated list of charges."
+        },
+        {
+          "info": {
+            "name": "Get a charge by id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/charges/{{transactionId}}"
+          },
+          "docs": "Retrieves a single charge."
+        },
+        {
+          "info": {
+            "name": "Refund a charge.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/charges/{{transactionId}}/refund",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"description\": \"Customer refund\"\n}"
+            }
+          },
+          "docs": "Refunds a completed card charge, fully or partially."
+        },
+        {
+          "info": {
+            "name": "Capture a previously authorized charge.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/charges/{{transactionId}}/capture",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"amount\": 100\n}"
+            }
+          },
+          "docs": "Captures a charge created with capture=false."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"email\": \"jane@example.com\",\n  \"phone_number\": \"5512345678\"\n}"
+            }
+          },
+          "docs": "Creates a customer record."
+        },
+        {
+          "info": {
+            "name": "List customers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers"
+          },
+          "docs": "Returns a paginated list of customers."
+        },
+        {
+          "info": {
+            "name": "Get a customer by id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}"
+          },
+          "docs": "Retrieves a single customer."
+        },
+        {
+          "info": {
+            "name": "Update a customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"email\": \"jane@example.com\"\n}"
+            }
+          },
+          "docs": "Updates a customer record."
+        },
+        {
+          "info": {
+            "name": "Delete a customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}"
+          },
+          "docs": "Deletes a customer record."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Store a card for a customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/cards",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"token_id\": \"{{tokenId}}\",\n  \"device_session_id\": \"{{deviceSessionId}}\"\n}"
+            }
+          },
+          "docs": "Stores a card for a customer using a token or raw card data."
+        },
+        {
+          "info": {
+            "name": "List a customer's cards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/cards"
+          },
+          "docs": "Lists the cards stored for a customer."
+        },
+        {
+          "info": {
+            "name": "Delete a customer's card.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/cards/{{cardId}}"
+          },
+          "docs": "Deletes a stored card."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a card token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/tokens",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"card_number\": \"4111111111111111\",\n  \"holder_name\": \"Jane Doe\",\n  \"expiration_year\": \"30\",\n  \"expiration_month\": \"12\",\n  \"cvv2\": \"123\"\n}"
+            }
+          },
+          "docs": "Tokenizes card data to reduce PCI scope."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a plan.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/plans",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"Monthly plan\",\n  \"amount\": 150,\n  \"repeat_every\": 1,\n  \"repeat_unit\": \"month\",\n  \"retry_times\": 2,\n  \"status_after_retry\": \"unpaid\",\n  \"trial_days\": 30\n}"
+            }
+          },
+          "docs": "Creates a plan template for subscriptions."
+        },
+        {
+          "info": {
+            "name": "List plans.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/plans"
+          },
+          "docs": "Lists subscription plans."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a subscription for a customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"plan_id\": \"{{planId}}\",\n  \"source_id\": \"{{cardId}}\"\n}"
+            }
+          },
+          "docs": "Subscribes a customer and card to a plan."
+        },
+        {
+          "info": {
+            "name": "List a customer's subscriptions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/subscriptions"
+          },
+          "docs": "Lists a customer's subscriptions."
+        },
+        {
+          "info": {
+            "name": "Cancel a subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/subscriptions/{{subscriptionId}}"
+          },
+          "docs": "Cancels a subscription."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a payout to a registered bank account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/payouts",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"method\": \"bank_account\",\n  \"destination_id\": \"{{bankAccountId}}\",\n  \"amount\": 200,\n  \"description\": \"Vendor payout\",\n  \"order_id\": \"payout-001\"\n}"
+            }
+          },
+          "docs": "Sends a payout to a registered bank account."
+        },
+        {
+          "info": {
+            "name": "List a customer's payouts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/payouts"
+          },
+          "docs": "Lists payouts for a customer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transfer funds from one customer to another.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/transfers",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"customer_id\": \"{{destinationCustomerId}}\",\n  \"amount\": 50,\n  \"description\": \"Funds transfer\",\n  \"order_id\": \"transfer-001\"\n}"
+            }
+          },
+          "docs": "Transfers funds between Openpay customers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "BankAccounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a bank account to a customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/bankaccounts",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"clabe\": \"012298026516924616\",\n  \"alias\": \"Main account\",\n  \"holder_name\": \"Jane Doe\"\n}"
+            }
+          },
+          "docs": "Registers a bank account as a payout destination."
+        },
+        {
+          "info": {
+            "name": "List a customer's bank accounts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/customers/{{customerId}}/bankaccounts"
+          },
+          "docs": "Lists a customer's registered bank accounts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Charge a commission fee to a customer's balance.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/fees",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"customer_id\": \"{{customerId}}\",\n  \"amount\": 12.5,\n  \"description\": \"Marketplace commission\",\n  \"order_id\": \"fee-001\"\n}"
+            }
+          },
+          "docs": "Charges a commission fee to a customer's Openpay balance."
+        },
+        {
+          "info": {
+            "name": "List charged fees.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/fees"
+          },
+          "docs": "Lists previously charged fees."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a webhook endpoint.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"url\": \"https://example.com/openpay/webhook\",\n  \"user\": \"hookuser\",\n  \"password\": \"hookpass\",\n  \"event_types\": [\"charge.succeeded\", \"charge.refunded\", \"payout.succeeded\"]\n}"
+            }
+          },
+          "docs": "Registers a webhook endpoint to receive event notifications."
+        },
+        {
+          "info": {
+            "name": "List registered webhooks.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/webhooks"
+          },
+          "docs": "Lists registered webhook endpoints."
+        },
+        {
+          "info": {
+            "name": "Delete a webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openpay.mx/v1/{{merchantId}}/webhooks/{{webhookId}}"
+          },
+          "docs": "Deletes a webhook endpoint."
+        }
+      ]
+    }
+  ]
+}

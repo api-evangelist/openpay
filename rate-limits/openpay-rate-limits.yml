@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Openpay
+providerId: openpay
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Payments
+- Fintech
+- Cards
+- SPEI
+- Subscriptions
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Openpay does not publish explicit numeric request-per-second or request-per-minute
+  rate limits in its public API reference. As a payments platform it applies
+  account- and merchant-level throttling and anti-fraud controls, and may return
+  HTTP 429 or service-unavailable responses under excessive load. List endpoints
+  are paginated via offset and limit query parameters. Specific per-merchant
+  limits are not reconciled in this artifact and should be confirmed with Openpay.
+notes: >-
+  Confirm any throttling thresholds, burst allowances, and 429 behavior directly
+  with Openpay support on reconciliation. Pagination on list endpoints defaults
+  to a small page size (commonly limit=10) and should be used to avoid large
+  unbounded responses.
+sources:
+- https://documents.openpay.mx/docs/api
+- https://www.openpay.mx
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Merchant
+  scope: merchant
+  metric: requests
+  limit: see provider documentation
+  notes: No public numeric per-merchant request rate limit is documented.
+- name: List Pagination
+  scope: endpoint
+  metric: records
+  limit: offset / limit query parameters
+  notes: List endpoints return paginated results; default limit is small (commonly 10).
+- name: Anti-Fraud Throttling
+  scope: account
+  metric: transactions
+  limit: dynamic
+  notes: Velocity and anti-fraud rules may decline or throttle bursts of card charges.
+policies:
+- name: Pagination
+  description: Use offset and limit on list endpoints to page through charges, customers, payouts, and fees.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on 429 and 5xx responses and avoid retrying non-idempotent charge creation without an order_id.
+- name: Idempotency
+  description: Send a unique order_id on charges and payouts to avoid duplicate transactions on retry.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,116 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Openpay
+providerId: openpay
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Payments
+- Fintech
+- Cards
+- SPEI
+- Subscriptions
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Openpay processing costs. Openpay's cost is a per-transaction
+  commission rather than per-API-call billing: card payments incur a percentage
+  plus a fixed fee, store/cash (Paynet) and bank transfer (SPEI) payments incur
+  flat per-transaction fees, and payouts incur a per-payout fee. Costs scale with
+  payment volume and method mix, vary by country (Mexico, Colombia), and are set
+  by the merchant's Openpay / BBVA commercial agreement. Rates here are not
+  reconciled against a current published rate card.
+notes: >-
+  Per-transaction commissions are subject to negotiation and local taxes (e.g.
+  IVA in Mexico); verify against the merchant's Openpay contract during
+  reconciliation. Track method mix because card vs. SPEI vs. store economics differ.
+sources:
+- https://www.openpay.mx
+- https://documents.openpay.mx/docs/api
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Openpay
+serviceCategory: Payment Processing
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: MXN
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Openpay Payments
+  ServiceCategory: Payment Processing
+  ProviderName: Openpay
+  PublisherName: Openpay
+  InvoiceIssuerName: Openpay
+  BillingCurrency: MXN
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: card_transaction_volume
+  description: Value of card charges processed, billed as a percentage commission.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - merchant
+  - currency
+  - card_brand
+- name: card_transaction_count
+  description: Count of card charges, billed with a fixed per-transaction fee.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - merchant
+  - method
+- name: store_transaction_count
+  description: Count of store/cash (Paynet) payments, billed a flat fee per transaction.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - merchant
+- name: spei_transaction_count
+  description: Count of bank-transfer (SPEI) payments, billed a flat fee per transaction.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - merchant
+- name: payout_count
+  description: Count of payouts sent to bank accounts, billed a per-payout fee.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - merchant
+- name: refund_count
+  description: Count of refunds processed; refund handling and fee retention vary by contract.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - merchant
+- name: chargeback_count
+  description: Count of chargebacks/disputes, which may carry handling fees.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - merchant
+principles:
+- name: Visibility
+  description: Pull Openpay transaction reports; break down commission cost by payment method and card brand.
+- name: Allocation
+  description: Tag charges and payouts with order_id and map merchant accounts to internal cost centers.
+- name: Optimization
+  description: Steer eligible volume to lower-cost methods (SPEI/store vs. card) where the customer experience allows, and minimize avoidable chargebacks.
+- name: Accountability
+  description: Reconcile per-method commissions against contract rates monthly and assign owners per merchant account.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

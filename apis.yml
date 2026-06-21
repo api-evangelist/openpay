@@ -1,0 +1,179 @@
+aid: openpay
+url: https://raw.githubusercontent.com/api-evangelist/openpay/refs/heads/main/apis.yml
+name: Openpay
+kind: company
+description: Openpay is a Mexican and Colombian online payments platform, part of the
+  BBVA group, offering a REST API for accepting card payments, cash/store payments,
+  and bank transfers (SPEI). The API covers charges, customers, cards, tokens,
+  subscriptions, plans, payouts, transfers, fees, and webhooks under a per-merchant
+  base path with HTTP Basic authentication using a private API key.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Payments
+- Fintech
+- Cards
+- SPEI
+- Subscriptions
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: openpay:openpay-charges-api
+  name: Openpay Charges API
+  tags:
+  - Charges
+  - Payments
+  - Cards
+  - Store
+  - SPEI
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://documents.openpay.mx/docs/api
+  baseURL: https://api.openpay.mx/v1
+  properties:
+  - url: https://documents.openpay.mx/docs/api
+    type: Documentation
+  - url: https://documents.openpay.mx/docs/api
+    type: APIReference
+  - url: openapi/openpay-openapi.yml
+    type: OpenAPI
+  - url: collections/openpay.postman_collection.json
+    type: PostmanCollection
+  - url: collections/openpay.opencollection.json
+    type: OpenCollection
+  description: Create and manage charges against cards, convenience stores (cash),
+    and banks (SPEI) at both merchant and customer level, including capture, refund,
+    and listing of transactions.
+- aid: openpay:openpay-customers-cards-api
+  name: Openpay Customers and Cards API
+  tags:
+  - Customers
+  - Cards
+  - Tokens
+  - Vault
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://documents.openpay.mx/docs/api
+  baseURL: https://api.openpay.mx/v1
+  properties:
+  - url: https://documents.openpay.mx/docs/api
+    type: Documentation
+  - url: https://documents.openpay.mx/docs/api
+    type: APIReference
+  - url: openapi/openpay-openapi.yml
+    type: OpenAPI
+  - url: collections/openpay.postman_collection.json
+    type: PostmanCollection
+  - url: collections/openpay.opencollection.json
+    type: OpenCollection
+  description: Create, retrieve, update, list, and delete customers, store and manage
+    their cards at merchant or customer level, and tokenize card data client-side to
+    reduce PCI scope.
+- aid: openpay:openpay-subscriptions-plans-api
+  name: Openpay Subscriptions and Plans API
+  tags:
+  - Subscriptions
+  - Plans
+  - Recurring
+  - Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://documents.openpay.mx/docs/api
+  baseURL: https://api.openpay.mx/v1
+  properties:
+  - url: https://documents.openpay.mx/docs/api
+    type: Documentation
+  - url: https://documents.openpay.mx/docs/api
+    type: APIReference
+  - url: openapi/openpay-openapi.yml
+    type: OpenAPI
+  - url: collections/openpay.postman_collection.json
+    type: PostmanCollection
+  - url: collections/openpay.opencollection.json
+    type: OpenCollection
+  description: Define plans as templates for recurring charges (amount and frequency)
+    and associate customers and cards to those plans through subscriptions, with full
+    create, update, cancel, and list operations.
+- aid: openpay:openpay-payouts-transfers-api
+  name: Openpay Payouts and Transfers API
+  tags:
+  - Payouts
+  - Transfers
+  - Bank Accounts
+  - SPEI
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://documents.openpay.mx/docs/api
+  baseURL: https://api.openpay.mx/v1
+  properties:
+  - url: https://documents.openpay.mx/docs/api
+    type: Documentation
+  - url: https://documents.openpay.mx/docs/api
+    type: APIReference
+  - url: openapi/openpay-openapi.yml
+    type: OpenAPI
+  - url: collections/openpay.postman_collection.json
+    type: PostmanCollection
+  - url: collections/openpay.opencollection.json
+    type: OpenCollection
+  description: Send payouts to registered bank accounts, move funds between customers
+    with transfers, and manage customer bank accounts used as payout destinations.
+- aid: openpay:openpay-fees-api
+  name: Openpay Fees API
+  tags:
+  - Fees
+  - Commissions
+  - Marketplace
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://documents.openpay.mx/docs/api
+  baseURL: https://api.openpay.mx/v1
+  properties:
+  - url: https://documents.openpay.mx/docs/api
+    type: Documentation
+  - url: https://documents.openpay.mx/docs/api
+    type: APIReference
+  - url: openapi/openpay-openapi.yml
+    type: OpenAPI
+  - url: collections/openpay.postman_collection.json
+    type: PostmanCollection
+  - url: collections/openpay.opencollection.json
+    type: OpenCollection
+  description: Charge commission fees to a customer's Openpay balance, typically used
+    in marketplace and split-payment scenarios, and list previously collected fees.
+- aid: openpay:openpay-webhooks-api
+  name: Openpay Webhooks API
+  tags:
+  - Webhooks
+  - Notifications
+  - Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://documents.openpay.mx/docs/webhooks.html
+  baseURL: https://api.openpay.mx/v1
+  properties:
+  - url: https://documents.openpay.mx/docs/webhooks.html
+    type: Documentation
+  - url: https://documents.openpay.mx/docs/api
+    type: APIReference
+  - url: openapi/openpay-openapi.yml
+    type: OpenAPI
+  - url: collections/openpay.postman_collection.json
+    type: PostmanCollection
+  - url: collections/openpay.opencollection.json
+    type: OpenCollection
+  description: Register, verify, retrieve, list, and delete webhook endpoints that
+    receive POST notifications for transaction events such as charge.succeeded,
+    charge.refunded, charge.failed, and payout events.
+common:
+- type: GitHubOrganization
+  url: https://github.com/open-pay
+- type: LinkedIn
+  url: https://www.linkedin.com/company/openpay
+- type: Website
+  url: https://www.openpay.mx
+- type: Documentation
+  url: https://documents.openpay.mx/docs/api
+- type: Plans
+  url: plans/openpay-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/openpay-rate-limits.yml
+- type: FinOps
+  url: finops/openpay-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
