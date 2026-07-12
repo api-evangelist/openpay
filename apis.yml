@@ -160,6 +160,10 @@ apis:
     receive POST notifications for transaction events such as charge.succeeded,
     charge.refunded, charge.failed, and payout events.
 common:
+- type: DomainSecurity
+  url: security/openpay-domain-security.yml
+- type: Authentication
+  url: authentication/openpay-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/open-pay
 - type: LinkedIn
