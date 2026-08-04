@@ -1,0 +1,34 @@
+{
+  "provider": "openpay",
+  "sources": [
+    "openpay-bankaccounts-api-openapi.yml",
+    "openpay-cards-api-openapi.yml",
+    "openpay-charges-api-openapi.yml",
+    "openpay-customers-api-openapi.yml",
+    "openpay-fees-api-openapi.yml",
+    "openpay-payouts-api-openapi.yml",
+    "openpay-plans-api-openapi.yml",
+    "openpay-subscriptions-api-openapi.yml",
+    "openpay-tokens-api-openapi.yml",
+    "openpay-transfers-api-openapi.yml",
+    "openpay-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "openpay-bankaccounts-api-openapi.yml",
+    "openpay-cards-api-openapi.yml",
+    "openpay-charges-api-openapi.yml",
+    "openpay-customers-api-openapi.yml",
+    "openpay-fees-api-openapi.yml",
+    "openpay-payouts-api-openapi.yml",
+    "openpay-plans-api-openapi.yml",
+    "openpay-subscriptions-api-openapi.yml",
+    "openpay-tokens-api-openapi.yml",
+    "openpay-transfers-api-openapi.yml",
+    "openpay-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
