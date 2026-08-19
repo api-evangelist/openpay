@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Openpay BankAccounts Subscriptions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a customer's subscriptions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/:merchant_id/customers/:customer_id/subscriptions",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a customer's subscriptions."
+        },
+        {
+          "info": {
+            "name": "Create a subscription for a customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/:merchant_id/customers/:customer_id/subscriptions",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a subscription for a customer."
+        },
+        {
+          "info": {
+            "name": "Get a subscription by id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/:merchant_id/customers/:customer_id/subscriptions/:subscription_id",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a subscription by id."
+        },
+        {
+          "info": {
+            "name": "Update a subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openpay.mx/v1/:merchant_id/customers/:customer_id/subscriptions/:subscription_id",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a subscription."
+        },
+        {
+          "info": {
+            "name": "Cancel a subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openpay.mx/v1/:merchant_id/customers/:customer_id/subscriptions/:subscription_id",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel a subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,612 @@
+{
+  "item": [
+    {
+      "id": "55e3325d-927e-4293-b017-bfc4883f2df7",
+      "name": "Plans",
+      "description": {
+        "content": "Templates defining amount and frequency for recurring charges.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "affe3003-31fb-4423-ba44-5f1146063b5d",
+          "name": "Create a plan.",
+          "request": {
+            "name": "Create a plan.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"repeat_every\": \"<integer>\",\n  \"repeat_unit\": \"<string>\",\n  \"retry_times\": \"<integer>\",\n  \"status_after_retry\": \"<string>\",\n  \"trial_days\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "203374c7-3360-47e3-88cb-9a4da08184dc",
+              "name": "Plan created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"repeat_every\": \"<integer>\",\n  \"repeat_unit\": \"<string>\",\n  \"retry_times\": \"<integer>\",\n  \"status_after_retry\": \"<string>\",\n  \"trial_days\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"amount\": 4095.6709444920903,\n  \"currency\": \"string\",\n  \"repeat_every\": 9509,\n  \"repeat_unit\": \"string\",\n  \"retry_times\": 3781,\n  \"status\": \"string\",\n  \"status_after_retry\": \"string\",\n  \"trial_days\": 4231,\n  \"creation_date\": \"1978-02-26T03:49:06.395Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "baf22967-2b2a-49bc-9da3-8559d5157ae8",
+          "name": "List plans.",
+          "request": {
+            "name": "List plans.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "155496a9-ecd5-4b4f-aab2-6cdb1f4194b1",
+              "name": "A list of plans.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"amount\": 9319.379125137322,\n    \"currency\": \"string\",\n    \"repeat_every\": 1899,\n    \"repeat_unit\": \"string\",\n    \"retry_times\": 8820,\n    \"status\": \"string\",\n    \"status_after_retry\": \"string\",\n    \"trial_days\": 4200,\n    \"creation_date\": \"2019-08-30T17:08:12.419Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"amount\": 8195.626733100673,\n    \"currency\": \"string\",\n    \"repeat_every\": 3138,\n    \"repeat_unit\": \"string\",\n    \"retry_times\": 2010,\n    \"status\": \"string\",\n    \"status_after_retry\": \"string\",\n    \"trial_days\": 1489,\n    \"creation_date\": \"2000-01-17T19:17:35.210Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5c10b8b-5887-4bcb-97ca-ff15d23395b2",
+          "name": "Get a plan by id.",
+          "request": {
+            "name": "Get a plan by id.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "plans",
+                ":plan_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "plan_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0851349-9cc7-4760-89fe-2e2f48776cfa",
+              "name": "The plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "plans",
+                    ":plan_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plan_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"amount\": 4095.6709444920903,\n  \"currency\": \"string\",\n  \"repeat_every\": 9509,\n  \"repeat_unit\": \"string\",\n  \"retry_times\": 3781,\n  \"status\": \"string\",\n  \"status_after_retry\": \"string\",\n  \"trial_days\": 4231,\n  \"creation_date\": \"1978-02-26T03:49:06.395Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a1582bb-37ef-4136-9c74-dada9e9253a2",
+          "name": "Update a plan.",
+          "request": {
+            "name": "Update a plan.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "plans",
+                ":plan_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "plan_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"repeat_every\": \"<integer>\",\n  \"repeat_unit\": \"<string>\",\n  \"retry_times\": \"<integer>\",\n  \"status_after_retry\": \"<string>\",\n  \"trial_days\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a67b10f-8dcb-48ca-b285-df51cf2a86fe",
+              "name": "The updated plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "plans",
+                    ":plan_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plan_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"repeat_every\": \"<integer>\",\n  \"repeat_unit\": \"<string>\",\n  \"retry_times\": \"<integer>\",\n  \"status_after_retry\": \"<string>\",\n  \"trial_days\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"amount\": 4095.6709444920903,\n  \"currency\": \"string\",\n  \"repeat_every\": 9509,\n  \"repeat_unit\": \"string\",\n  \"retry_times\": 3781,\n  \"status\": \"string\",\n  \"status_after_retry\": \"string\",\n  \"trial_days\": 4231,\n  \"creation_date\": \"1978-02-26T03:49:06.395Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "724f0160-966c-41b0-9fe0-14d57b2d21a0",
+          "name": "Delete a plan.",
+          "request": {
+            "name": "Delete a plan.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "plans",
+                ":plan_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "plan_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d08f682-9353-4188-b3b1-b7954e26ad18",
+              "name": "Plan deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "plans",
+                    ":plan_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plan_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openpay.mx/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4f2e14cb-55ee-4736-ba1d-37c1a419d158",
+    "name": "Openpay BankAccounts Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.\n\nContact Support:\n Name: Openpay Support\n Email: soporte@openpay.mx",
+      "type": "text/plain"
+    }
+  }
+}

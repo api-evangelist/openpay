@@ -1,0 +1,437 @@
+{
+  "item": [
+    {
+      "id": "6de795bc-a75a-4c7f-83a6-ca83ae9813c8",
+      "name": "Payouts",
+      "description": {
+        "content": "Send funds to registered bank accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b650ceb8-17c8-4e34-825a-2057a54d6314",
+          "name": "Create a payout to a registered bank account.",
+          "request": {
+            "name": "Create a payout to a registered bank account.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"bank_account\",\n  \"amount\": \"<float>\",\n  \"destination_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af27c0d3-c279-4104-aa0d-76da367a6ccb",
+              "name": "Payout created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"bank_account\",\n  \"amount\": \"<float>\",\n  \"destination_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amount\": 6203.231635069949,\n  \"currency\": \"string\",\n  \"method\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"order_id\": \"string\",\n  \"bank_account\": {\n    \"id\": \"string\",\n    \"clabe\": \"string\",\n    \"alias\": \"string\",\n    \"holder_name\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1962-08-02T08:40:38.457Z\"\n  },\n  \"creation_date\": \"2009-04-04T01:11:32.543Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cef625cc-8733-49c8-bc2a-a02f75869075",
+          "name": "List a customer's payouts.",
+          "request": {
+            "name": "List a customer's payouts.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37463114-cf90-47ae-acfc-595378363ab1",
+              "name": "A list of payouts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"amount\": 7992.02371881948,\n    \"currency\": \"string\",\n    \"method\": \"string\",\n    \"status\": \"string\",\n    \"description\": \"string\",\n    \"order_id\": \"string\",\n    \"bank_account\": {\n      \"id\": \"string\",\n      \"clabe\": \"string\",\n      \"alias\": \"string\",\n      \"holder_name\": \"string\",\n      \"bank_name\": \"string\",\n      \"bank_code\": \"string\",\n      \"creation_date\": \"1981-12-07T11:18:51.405Z\"\n    },\n    \"creation_date\": \"2000-03-28T23:56:28.328Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"amount\": 4454.28827909958,\n    \"currency\": \"string\",\n    \"method\": \"string\",\n    \"status\": \"string\",\n    \"description\": \"string\",\n    \"order_id\": \"string\",\n    \"bank_account\": {\n      \"id\": \"string\",\n      \"clabe\": \"string\",\n      \"alias\": \"string\",\n      \"holder_name\": \"string\",\n      \"bank_name\": \"string\",\n      \"bank_code\": \"string\",\n      \"creation_date\": \"1967-10-30T16:44:48.932Z\"\n    },\n    \"creation_date\": \"1972-10-10T14:43:39.789Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de1ef4a6-c8f9-417c-90a7-2b52ef29a291",
+          "name": "Get a payout by id.",
+          "request": {
+            "name": "Get a payout by id.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "payouts",
+                ":payout_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payout_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47b4710f-609a-4db9-a594-b70f0ded6a35",
+              "name": "The payout.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "payouts",
+                    ":payout_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payout_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amount\": 6203.231635069949,\n  \"currency\": \"string\",\n  \"method\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"order_id\": \"string\",\n  \"bank_account\": {\n    \"id\": \"string\",\n    \"clabe\": \"string\",\n    \"alias\": \"string\",\n    \"holder_name\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1962-08-02T08:40:38.457Z\"\n  },\n  \"creation_date\": \"2009-04-04T01:11:32.543Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openpay.mx/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "52cac0cd-e917-448e-b23a-02ef4246371e",
+    "name": "Openpay BankAccounts Payouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.\n\nContact Support:\n Name: Openpay Support\n Email: soporte@openpay.mx",
+      "type": "text/plain"
+    }
+  }
+}

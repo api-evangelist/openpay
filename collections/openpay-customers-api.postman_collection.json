@@ -1,0 +1,622 @@
+{
+  "item": [
+    {
+      "id": "b08f6acb-5b5a-4228-a330-debb58cd694d",
+      "name": "Customers",
+      "description": {
+        "content": "Manage customer records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca269001-b738-4074-bf1b-7c95c1543913",
+          "name": "Create a customer.",
+          "request": {
+            "name": "Create a customer.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"requires_account\": \"<boolean>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e264f546-d596-4af7-bb09-d6bbc4fd9756",
+              "name": "Customer created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"requires_account\": \"<boolean>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"MX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"phone_number\": \"string\",\n  \"status\": \"string\",\n  \"balance\": 3280.292623488731,\n  \"creation_date\": \"1985-05-01T07:51:33.818Z\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"MX\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f401067a-fc4e-48bd-a27e-01ef376e6752",
+          "name": "List customers.",
+          "request": {
+            "name": "List customers.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creation",
+                  "value": "<date>",
+                  "description": "Filter by creation date (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6404257b-f96c-4c2d-873a-4add1fa8c295",
+              "name": "A list of customers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creation",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"phone_number\": \"string\",\n    \"status\": \"string\",\n    \"balance\": 6920.117687561215,\n    \"creation_date\": \"1965-10-07T02:40:44.080Z\",\n    \"address\": {\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"line3\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country_code\": \"MX\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"phone_number\": \"string\",\n    \"status\": \"string\",\n    \"balance\": 4100.196916339487,\n    \"creation_date\": \"1974-06-30T01:10:18.901Z\",\n    \"address\": {\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"line3\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country_code\": \"MX\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78f5c15a-0dc4-4e7c-9806-4a9031632bee",
+          "name": "Get a customer by id.",
+          "request": {
+            "name": "Get a customer by id.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b96a0f4-9d27-4a26-8ddf-a5076d1a847d",
+              "name": "The customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"phone_number\": \"string\",\n  \"status\": \"string\",\n  \"balance\": 3280.292623488731,\n  \"creation_date\": \"1985-05-01T07:51:33.818Z\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"MX\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f63c2b2-18d9-4593-9fad-c2241e7740db",
+          "name": "Update a customer.",
+          "request": {
+            "name": "Update a customer.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"requires_account\": \"<boolean>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b19dbb36-5f97-4ec5-8439-761ce7cfe2d3",
+              "name": "The updated customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"requires_account\": \"<boolean>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"MX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"phone_number\": \"string\",\n  \"status\": \"string\",\n  \"balance\": 3280.292623488731,\n  \"creation_date\": \"1985-05-01T07:51:33.818Z\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"MX\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23f319a9-1929-41bc-bc91-520b24d0a68d",
+          "name": "Delete a customer.",
+          "request": {
+            "name": "Delete a customer.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b14d8f0-9114-4d8b-91ce-f4d82a90793f",
+              "name": "Customer deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openpay.mx/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d51272c-6e22-4cdf-95dc-bd77505deecd",
+    "name": "Openpay BankAccounts Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.\n\nContact Support:\n Name: Openpay Support\n Email: soporte@openpay.mx",
+      "type": "text/plain"
+    }
+  }
+}

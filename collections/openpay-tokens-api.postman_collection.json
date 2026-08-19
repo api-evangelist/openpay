@@ -1,0 +1,271 @@
+{
+  "item": [
+    {
+      "id": "b6c1ba3b-67ac-436a-b0db-e456253203cd",
+      "name": "Tokens",
+      "description": {
+        "content": "Client-side tokenization of card data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b69214a5-2dfa-4ba9-ace2-751e8e988bfa",
+          "name": "Create a card token.",
+          "request": {
+            "name": "Create a card token.",
+            "description": {
+              "content": "Tokenizes card data so it does not pass through the merchant server, reducing PCI scope. Typically called with the public API key from the browser or device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":merchant_id",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"card_number\": \"<string>\",\n  \"holder_name\": \"<string>\",\n  \"expiration_year\": \"<string>\",\n  \"expiration_month\": \"<string>\",\n  \"cvv2\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d8717a0-e6e5-4aaf-b915-c66666584239",
+              "name": "Token created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"card_number\": \"<string>\",\n  \"holder_name\": \"<string>\",\n  \"expiration_year\": \"<string>\",\n  \"expiration_month\": \"<string>\",\n  \"cvv2\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"line3\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country_code\": \"MX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"credit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"2002-06-27T20:43:17.435Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ac6c0f1-d71c-49b9-abd3-d88173d9b43b",
+          "name": "Get a token by id.",
+          "request": {
+            "name": "Get a token by id.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "tokens",
+                ":token_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ca12434-18a5-4004-b009-9a1445125e87",
+              "name": "The token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "tokens",
+                    ":token_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"credit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"2002-06-27T20:43:17.435Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openpay.mx/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f0aaf018-7f10-44cd-a648-e4aa57346985",
+    "name": "Openpay BankAccounts Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.\n\nContact Support:\n Name: Openpay Support\n Email: soporte@openpay.mx",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Openpay BankAccounts Tokens API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a card token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/:merchant_id/tokens",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Tokenizes card data so it does not pass through the merchant server, reducing PCI scope. Typically called with the public API key from the browser or device."
+        },
+        {
+          "info": {
+            "name": "Get a token by id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/:merchant_id/tokens/:token_id",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a token by id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

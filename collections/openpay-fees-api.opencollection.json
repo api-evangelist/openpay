@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Openpay BankAccounts Fees API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List charged fees.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/:merchant_id/fees",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              }
+            ]
+          },
+          "docs": "List charged fees."
+        },
+        {
+          "info": {
+            "name": "Charge a commission fee to a customer's balance.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/:merchant_id/fees",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Charge a commission fee to a customer's balance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

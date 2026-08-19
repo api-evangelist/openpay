@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Openpay BankAccounts Charges API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Charges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List charges at the merchant level.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/:merchant_id/charges",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "creation",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creation date (yyyy-mm-dd)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              }
+            ]
+          },
+          "docs": "List charges at the merchant level."
+        },
+        {
+          "info": {
+            "name": "Create a charge at the merchant level.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/:merchant_id/charges",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a charge against a card (saved card id, token, or raw card data), a store (cash), or a bank (SPEI). For card charges, set capture=false to authorize without capturing."
+        },
+        {
+          "info": {
+            "name": "Get a charge by id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/:merchant_id/charges/:transaction_id",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a charge by id."
+        },
+        {
+          "info": {
+            "name": "Refund a charge.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/:merchant_id/charges/:transaction_id/refund",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refund a charge."
+        },
+        {
+          "info": {
+            "name": "Capture a previously authorized charge.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/:merchant_id/charges/:transaction_id/capture",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Capture a previously authorized charge."
+        },
+        {
+          "info": {
+            "name": "List a customer's charges.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openpay.mx/v1/:merchant_id/customers/:customer_id/charges",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              }
+            ]
+          },
+          "docs": "List a customer's charges."
+        },
+        {
+          "info": {
+            "name": "Create a charge at the customer level.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openpay.mx/v1/:merchant_id/customers/:customer_id/charges",
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The merchant identifier that scopes all resources."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a charge at the customer level."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,274 @@
+{
+  "item": [
+    {
+      "id": "5b18b450-fb90-4185-be3d-5e76307c290c",
+      "name": "Fees",
+      "description": {
+        "content": "Charge commission fees to a customer's Openpay balance.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d13522de-a42d-46a6-92f7-5997ef5dfefa",
+          "name": "Charge a commission fee to a customer's balance.",
+          "request": {
+            "name": "Charge a commission fee to a customer's balance.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "fees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a6a9002-146b-4cc8-aab5-1d04e48da005",
+              "name": "Fee charged.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amount\": 9979.369661266444,\n  \"currency\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"order_id\": \"string\",\n  \"creation_date\": \"2003-07-15T02:03:59.345Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef2a0b1c-baaf-4b81-9ba1-fe4ab8c36d1e",
+          "name": "List charged fees.",
+          "request": {
+            "name": "List charged fees.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "fees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "676298dd-44b6-4212-98ca-ef8c20f637b4",
+              "name": "A list of fees.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"amount\": 3422.7929276797254,\n    \"currency\": \"string\",\n    \"status\": \"string\",\n    \"description\": \"string\",\n    \"order_id\": \"string\",\n    \"creation_date\": \"2000-11-17T18:10:47.130Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"amount\": 3545.364857165757,\n    \"currency\": \"string\",\n    \"status\": \"string\",\n    \"description\": \"string\",\n    \"order_id\": \"string\",\n    \"creation_date\": \"2021-03-11T09:51:32.393Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openpay.mx/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e4bd37db-5f5a-433e-9ee9-1ac72b6d2faf",
+    "name": "Openpay BankAccounts Fees API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.\n\nContact Support:\n Name: Openpay Support\n Email: soporte@openpay.mx",
+      "type": "text/plain"
+    }
+  }
+}

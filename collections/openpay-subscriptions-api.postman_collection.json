@@ -1,0 +1,680 @@
+{
+  "item": [
+    {
+      "id": "14ff5cd0-8a07-47ab-b2ee-29f4d7d090c3",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Associate customers and cards to plans for recurring billing.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a82cbeb3-8402-43fe-8cc2-8e3969e0b242",
+          "name": "Create a subscription for a customer.",
+          "request": {
+            "name": "Create a subscription for a customer.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan_id\": \"<string>\",\n  \"trial_end_date\": \"<date>\",\n  \"source_id\": \"<string>\",\n  \"card\": {\n    \"card_number\": \"<string>\",\n    \"holder_name\": \"<string>\",\n    \"expiration_year\": \"<string>\",\n    \"expiration_month\": \"<string>\",\n    \"cvv2\": \"<string>\",\n    \"device_session_id\": \"<string>\",\n    \"token_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "458e26d2-cba9-49bc-a492-167e2c92f64d",
+              "name": "Subscription created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan_id\": \"<string>\",\n  \"trial_end_date\": \"<date>\",\n  \"source_id\": \"<string>\",\n  \"card\": {\n    \"card_number\": \"<string>\",\n    \"holder_name\": \"<string>\",\n    \"expiration_year\": \"<string>\",\n    \"expiration_month\": \"<string>\",\n    \"cvv2\": \"<string>\",\n    \"device_session_id\": \"<string>\",\n    \"token_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"customer_id\": \"string\",\n  \"plan_id\": \"string\",\n  \"status\": \"trial\",\n  \"cancel_at_period_end\": true,\n  \"charge_date\": \"1993-02-16\",\n  \"creation_date\": \"1993-03-15T07:33:20.044Z\",\n  \"current_period_number\": 3214,\n  \"period_end_date\": \"2015-08-18\",\n  \"trial_end_date\": \"1991-03-28\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"credit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1947-07-13T07:25:29.324Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44131fe8-53b9-4cbd-b3c1-076f637924a3",
+          "name": "List a customer's subscriptions.",
+          "request": {
+            "name": "List a customer's subscriptions.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d259f0a-75ac-4677-8aa7-670a0ad4a02c",
+              "name": "A list of subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"customer_id\": \"string\",\n    \"plan_id\": \"string\",\n    \"status\": \"trial\",\n    \"cancel_at_period_end\": true,\n    \"charge_date\": \"2015-04-09\",\n    \"creation_date\": \"2004-11-15T14:56:12.695Z\",\n    \"current_period_number\": 8610,\n    \"period_end_date\": \"1956-07-30\",\n    \"trial_end_date\": \"1997-01-20\",\n    \"card\": {\n      \"id\": \"string\",\n      \"type\": \"debit\",\n      \"brand\": \"visa\",\n      \"card_number\": \"string\",\n      \"holder_name\": \"string\",\n      \"expiration_year\": \"string\",\n      \"expiration_month\": \"string\",\n      \"bank_name\": \"string\",\n      \"bank_code\": \"string\",\n      \"creation_date\": \"1949-09-18T00:20:41.480Z\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"customer_id\": \"string\",\n    \"plan_id\": \"string\",\n    \"status\": \"trial\",\n    \"cancel_at_period_end\": true,\n    \"charge_date\": \"1987-03-26\",\n    \"creation_date\": \"1999-01-29T01:30:59.476Z\",\n    \"current_period_number\": 4544,\n    \"period_end_date\": \"1953-10-27\",\n    \"trial_end_date\": \"1971-05-20\",\n    \"card\": {\n      \"id\": \"string\",\n      \"type\": \"credit\",\n      \"brand\": \"visa\",\n      \"card_number\": \"string\",\n      \"holder_name\": \"string\",\n      \"expiration_year\": \"string\",\n      \"expiration_month\": \"string\",\n      \"bank_name\": \"string\",\n      \"bank_code\": \"string\",\n      \"creation_date\": \"1996-01-01T12:52:19.140Z\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "babc11df-5a2e-4bab-9fbf-9e826524cf8a",
+          "name": "Get a subscription by id.",
+          "request": {
+            "name": "Get a subscription by id.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "subscriptions",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea51a4f0-9c96-4fe5-8782-5e0cd6fe35b9",
+              "name": "The subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "subscriptions",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"customer_id\": \"string\",\n  \"plan_id\": \"string\",\n  \"status\": \"trial\",\n  \"cancel_at_period_end\": true,\n  \"charge_date\": \"1993-02-16\",\n  \"creation_date\": \"1993-03-15T07:33:20.044Z\",\n  \"current_period_number\": 3214,\n  \"period_end_date\": \"2015-08-18\",\n  \"trial_end_date\": \"1991-03-28\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"credit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1947-07-13T07:25:29.324Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cefd16a-2087-412a-9d5d-13513b7778ee",
+          "name": "Update a subscription.",
+          "request": {
+            "name": "Update a subscription.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "subscriptions",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan_id\": \"<string>\",\n  \"trial_end_date\": \"<date>\",\n  \"source_id\": \"<string>\",\n  \"card\": {\n    \"card_number\": \"<string>\",\n    \"holder_name\": \"<string>\",\n    \"expiration_year\": \"<string>\",\n    \"expiration_month\": \"<string>\",\n    \"cvv2\": \"<string>\",\n    \"device_session_id\": \"<string>\",\n    \"token_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe3fed8a-f461-4794-8153-0db55893adab",
+              "name": "The updated subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "subscriptions",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan_id\": \"<string>\",\n  \"trial_end_date\": \"<date>\",\n  \"source_id\": \"<string>\",\n  \"card\": {\n    \"card_number\": \"<string>\",\n    \"holder_name\": \"<string>\",\n    \"expiration_year\": \"<string>\",\n    \"expiration_month\": \"<string>\",\n    \"cvv2\": \"<string>\",\n    \"device_session_id\": \"<string>\",\n    \"token_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"customer_id\": \"string\",\n  \"plan_id\": \"string\",\n  \"status\": \"trial\",\n  \"cancel_at_period_end\": true,\n  \"charge_date\": \"1993-02-16\",\n  \"creation_date\": \"1993-03-15T07:33:20.044Z\",\n  \"current_period_number\": 3214,\n  \"period_end_date\": \"2015-08-18\",\n  \"trial_end_date\": \"1991-03-28\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"credit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1947-07-13T07:25:29.324Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c55bbcf5-d7d4-4f59-aac3-14f428de3c8b",
+          "name": "Cancel a subscription.",
+          "request": {
+            "name": "Cancel a subscription.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "subscriptions",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5abbc421-962b-4f23-b389-14c086be1d6e",
+              "name": "Subscription cancelled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "subscriptions",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openpay.mx/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ccf62998-40e5-48e1-8b54-d24ceefcf1d1",
+    "name": "Openpay BankAccounts Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.\n\nContact Support:\n Name: Openpay Support\n Email: soporte@openpay.mx",
+      "type": "text/plain"
+    }
+  }
+}

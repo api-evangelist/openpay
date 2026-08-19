@@ -1,0 +1,1105 @@
+{
+  "item": [
+    {
+      "id": "b9048831-5663-4eb6-9687-ae120e122a1d",
+      "name": "Charges",
+      "description": {
+        "content": "Create and manage charges to cards, stores, and banks.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3226df9-642e-4eab-9244-8ef085537dca",
+          "name": "Create a charge at the merchant level.",
+          "request": {
+            "name": "Create a charge at the merchant level.",
+            "description": {
+              "content": "Creates a charge against a card (saved card id, token, or raw card data), a store (cash), or a bank (SPEI). For card charges, set capture=false to authorize without capturing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":merchant_id",
+                "charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"source_id\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"device_session_id\": \"<string>\",\n  \"capture\": true,\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone_number\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9ef8b16-bb95-4b18-a8f6-d92d7553bd96",
+              "name": "Charge created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"source_id\": \"<string>\",\n  \"currency\": \"MXN\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"device_session_id\": \"<string>\",\n  \"capture\": true,\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone_number\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"authorization\": \"string\",\n  \"method\": \"string\",\n  \"operation_type\": \"in\",\n  \"transaction_type\": \"charge\",\n  \"status\": \"failed\",\n  \"amount\": 8177.771206482019,\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"order_id\": \"string\",\n  \"creation_date\": \"1954-05-21T17:29:09.965Z\",\n  \"operation_date\": \"1980-01-10T15:53:58.273Z\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"debit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1947-03-25T05:15:58.285Z\"\n  },\n  \"payment_method\": {\n    \"type\": \"string\",\n    \"reference\": \"string\",\n    \"barcode_url\": \"string\",\n    \"clabe\": \"string\",\n    \"agreement\": \"string\",\n    \"name\": \"string\"\n  },\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c682253f-c4a9-43ee-89ce-ddc7c792b774",
+              "name": "An Openpay error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"source_id\": \"<string>\",\n  \"currency\": \"MXN\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"device_session_id\": \"<string>\",\n  \"capture\": true,\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone_number\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"category\": \"internal\",\n  \"error_code\": 6633,\n  \"description\": \"string\",\n  \"http_code\": 7621,\n  \"request_id\": \"string\",\n  \"fraud_rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d6df961-fa6f-4e8a-8098-0b1e21b36205",
+              "name": "An Openpay error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"source_id\": \"<string>\",\n  \"currency\": \"MXN\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"device_session_id\": \"<string>\",\n  \"capture\": true,\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone_number\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"category\": \"gateway\",\n  \"error_code\": 452,\n  \"description\": \"string\",\n  \"http_code\": 3204,\n  \"request_id\": \"string\",\n  \"fraud_rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb355ad4-7d16-4852-a807-a31f4f5b7fd4",
+          "name": "List charges at the merchant level.",
+          "request": {
+            "name": "List charges at the merchant level.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creation",
+                  "value": "<date>",
+                  "description": "Filter by creation date (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c2c8792-35b8-4bea-acda-7d1a73947965",
+              "name": "A list of charges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creation",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"authorization\": \"string\",\n    \"method\": \"string\",\n    \"operation_type\": \"in\",\n    \"transaction_type\": \"charge\",\n    \"status\": \"completed\",\n    \"amount\": 6870.004184600074,\n    \"currency\": \"string\",\n    \"description\": \"string\",\n    \"order_id\": \"string\",\n    \"creation_date\": \"1975-03-27T11:46:41.077Z\",\n    \"operation_date\": \"1973-10-28T10:50:41.160Z\",\n    \"card\": {\n      \"id\": \"string\",\n      \"type\": \"debit\",\n      \"brand\": \"visa\",\n      \"card_number\": \"string\",\n      \"holder_name\": \"string\",\n      \"expiration_year\": \"string\",\n      \"expiration_month\": \"string\",\n      \"bank_name\": \"string\",\n      \"bank_code\": \"string\",\n      \"creation_date\": \"1965-08-17T17:42:16.400Z\"\n    },\n    \"payment_method\": {\n      \"type\": \"string\",\n      \"reference\": \"string\",\n      \"barcode_url\": \"string\",\n      \"clabe\": \"string\",\n      \"agreement\": \"string\",\n      \"name\": \"string\"\n    },\n    \"error_message\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"authorization\": \"string\",\n    \"method\": \"string\",\n    \"operation_type\": \"in\",\n    \"transaction_type\": \"charge\",\n    \"status\": \"refunded\",\n    \"amount\": 9077.268936615214,\n    \"currency\": \"string\",\n    \"description\": \"string\",\n    \"order_id\": \"string\",\n    \"creation_date\": \"2017-10-03T02:18:26.204Z\",\n    \"operation_date\": \"1989-10-18T17:28:55.071Z\",\n    \"card\": {\n      \"id\": \"string\",\n      \"type\": \"debit\",\n      \"brand\": \"visa\",\n      \"card_number\": \"string\",\n      \"holder_name\": \"string\",\n      \"expiration_year\": \"string\",\n      \"expiration_month\": \"string\",\n      \"bank_name\": \"string\",\n      \"bank_code\": \"string\",\n      \"creation_date\": \"2011-02-14T16:33:33.672Z\"\n    },\n    \"payment_method\": {\n      \"type\": \"string\",\n      \"reference\": \"string\",\n      \"barcode_url\": \"string\",\n      \"clabe\": \"string\",\n      \"agreement\": \"string\",\n      \"name\": \"string\"\n    },\n    \"error_message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a3307fc-42c1-42f9-be40-9393e888ad82",
+          "name": "Get a charge by id.",
+          "request": {
+            "name": "Get a charge by id.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "charges",
+                ":transaction_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transaction_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c31124e3-4bd2-48b3-bdda-872a9dc044fb",
+              "name": "The charge.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "charges",
+                    ":transaction_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"authorization\": \"string\",\n  \"method\": \"string\",\n  \"operation_type\": \"in\",\n  \"transaction_type\": \"charge\",\n  \"status\": \"failed\",\n  \"amount\": 8177.771206482019,\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"order_id\": \"string\",\n  \"creation_date\": \"1954-05-21T17:29:09.965Z\",\n  \"operation_date\": \"1980-01-10T15:53:58.273Z\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"debit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1947-03-25T05:15:58.285Z\"\n  },\n  \"payment_method\": {\n    \"type\": \"string\",\n    \"reference\": \"string\",\n    \"barcode_url\": \"string\",\n    \"clabe\": \"string\",\n    \"agreement\": \"string\",\n    \"name\": \"string\"\n  },\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf07b1a7-dd6d-457d-9818-ea0a321dbcdd",
+              "name": "An Openpay error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "charges",
+                    ":transaction_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"category\": \"gateway\",\n  \"error_code\": 452,\n  \"description\": \"string\",\n  \"http_code\": 3204,\n  \"request_id\": \"string\",\n  \"fraud_rules\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80e8d001-5a3c-492f-8430-bc63b6718dea",
+          "name": "Refund a charge.",
+          "request": {
+            "name": "Refund a charge.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "charges",
+                ":transaction_id",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transaction_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"amount\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3890ac01-f91b-4281-b2c0-8d66d2c9b185",
+              "name": "The refunded charge.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "charges",
+                    ":transaction_id",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"amount\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"authorization\": \"string\",\n  \"method\": \"string\",\n  \"operation_type\": \"in\",\n  \"transaction_type\": \"charge\",\n  \"status\": \"failed\",\n  \"amount\": 8177.771206482019,\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"order_id\": \"string\",\n  \"creation_date\": \"1954-05-21T17:29:09.965Z\",\n  \"operation_date\": \"1980-01-10T15:53:58.273Z\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"debit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1947-03-25T05:15:58.285Z\"\n  },\n  \"payment_method\": {\n    \"type\": \"string\",\n    \"reference\": \"string\",\n    \"barcode_url\": \"string\",\n    \"clabe\": \"string\",\n    \"agreement\": \"string\",\n    \"name\": \"string\"\n  },\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe67edab-72d0-45d9-84df-8037b9722a31",
+          "name": "Capture a previously authorized charge.",
+          "request": {
+            "name": "Capture a previously authorized charge.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "charges",
+                ":transaction_id",
+                "capture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transaction_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c486714a-dd02-4132-aed9-dfd890326593",
+              "name": "The captured charge.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "charges",
+                    ":transaction_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"authorization\": \"string\",\n  \"method\": \"string\",\n  \"operation_type\": \"in\",\n  \"transaction_type\": \"charge\",\n  \"status\": \"failed\",\n  \"amount\": 8177.771206482019,\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"order_id\": \"string\",\n  \"creation_date\": \"1954-05-21T17:29:09.965Z\",\n  \"operation_date\": \"1980-01-10T15:53:58.273Z\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"debit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1947-03-25T05:15:58.285Z\"\n  },\n  \"payment_method\": {\n    \"type\": \"string\",\n    \"reference\": \"string\",\n    \"barcode_url\": \"string\",\n    \"clabe\": \"string\",\n    \"agreement\": \"string\",\n    \"name\": \"string\"\n  },\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39b3e5e6-5e14-4c90-b067-0384cf040298",
+          "name": "Create a charge at the customer level.",
+          "request": {
+            "name": "Create a charge at the customer level.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"source_id\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"device_session_id\": \"<string>\",\n  \"capture\": true,\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone_number\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "369daa18-ce69-42e6-a64b-5a8371b15418",
+              "name": "Charge created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"source_id\": \"<string>\",\n  \"currency\": \"MXN\",\n  \"description\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"device_session_id\": \"<string>\",\n  \"capture\": true,\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone_number\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"authorization\": \"string\",\n  \"method\": \"string\",\n  \"operation_type\": \"in\",\n  \"transaction_type\": \"charge\",\n  \"status\": \"failed\",\n  \"amount\": 8177.771206482019,\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"order_id\": \"string\",\n  \"creation_date\": \"1954-05-21T17:29:09.965Z\",\n  \"operation_date\": \"1980-01-10T15:53:58.273Z\",\n  \"card\": {\n    \"id\": \"string\",\n    \"type\": \"debit\",\n    \"brand\": \"visa\",\n    \"card_number\": \"string\",\n    \"holder_name\": \"string\",\n    \"expiration_year\": \"string\",\n    \"expiration_month\": \"string\",\n    \"bank_name\": \"string\",\n    \"bank_code\": \"string\",\n    \"creation_date\": \"1947-03-25T05:15:58.285Z\"\n  },\n  \"payment_method\": {\n    \"type\": \"string\",\n    \"reference\": \"string\",\n    \"barcode_url\": \"string\",\n    \"clabe\": \"string\",\n    \"agreement\": \"string\",\n    \"name\": \"string\"\n  },\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3443f2d-b118-4df6-9e24-8e8ce611f9dd",
+          "name": "List a customer's charges.",
+          "request": {
+            "name": "List a customer's charges.",
+            "description": {},
+            "url": {
+              "path": [
+                ":merchant_id",
+                "customers",
+                ":customer_id",
+                "charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The merchant identifier that scopes all resources."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06bf273c-e850-4cb5-ba86-8b1cc30a1140",
+              "name": "A list of charges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":merchant_id",
+                    "customers",
+                    ":customer_id",
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The merchant identifier that scopes all resources."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"authorization\": \"string\",\n    \"method\": \"string\",\n    \"operation_type\": \"in\",\n    \"transaction_type\": \"charge\",\n    \"status\": \"completed\",\n    \"amount\": 6870.004184600074,\n    \"currency\": \"string\",\n    \"description\": \"string\",\n    \"order_id\": \"string\",\n    \"creation_date\": \"1975-03-27T11:46:41.077Z\",\n    \"operation_date\": \"1973-10-28T10:50:41.160Z\",\n    \"card\": {\n      \"id\": \"string\",\n      \"type\": \"debit\",\n      \"brand\": \"visa\",\n      \"card_number\": \"string\",\n      \"holder_name\": \"string\",\n      \"expiration_year\": \"string\",\n      \"expiration_month\": \"string\",\n      \"bank_name\": \"string\",\n      \"bank_code\": \"string\",\n      \"creation_date\": \"1965-08-17T17:42:16.400Z\"\n    },\n    \"payment_method\": {\n      \"type\": \"string\",\n      \"reference\": \"string\",\n      \"barcode_url\": \"string\",\n      \"clabe\": \"string\",\n      \"agreement\": \"string\",\n      \"name\": \"string\"\n    },\n    \"error_message\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"authorization\": \"string\",\n    \"method\": \"string\",\n    \"operation_type\": \"in\",\n    \"transaction_type\": \"charge\",\n    \"status\": \"refunded\",\n    \"amount\": 9077.268936615214,\n    \"currency\": \"string\",\n    \"description\": \"string\",\n    \"order_id\": \"string\",\n    \"creation_date\": \"2017-10-03T02:18:26.204Z\",\n    \"operation_date\": \"1989-10-18T17:28:55.071Z\",\n    \"card\": {\n      \"id\": \"string\",\n      \"type\": \"debit\",\n      \"brand\": \"visa\",\n      \"card_number\": \"string\",\n      \"holder_name\": \"string\",\n      \"expiration_year\": \"string\",\n      \"expiration_month\": \"string\",\n      \"bank_name\": \"string\",\n      \"bank_code\": \"string\",\n      \"creation_date\": \"2011-02-14T16:33:33.672Z\"\n    },\n    \"payment_method\": {\n      \"type\": \"string\",\n      \"reference\": \"string\",\n      \"barcode_url\": \"string\",\n      \"clabe\": \"string\",\n      \"agreement\": \"string\",\n      \"name\": \"string\"\n    },\n    \"error_message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openpay.mx/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "81da7625-1a3d-45bc-b1ff-8cad813c5ad3",
+    "name": "Openpay BankAccounts Charges API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.\n\nContact Support:\n Name: Openpay Support\n Email: soporte@openpay.mx",
+      "type": "text/plain"
+    }
+  }
+}
