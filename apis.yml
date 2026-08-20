@@ -26,6 +26,12 @@ tags:
 - Fintech
 - Cards
 - SPEI
+- Subscription
+tags_raw:
+- Payments
+- Fintech
+- Cards
+- SPEI
 - Subscriptions
 created: '2026-06-21'
 modified: '2026-06-21'
@@ -37,6 +43,8 @@ apis:
   humanURL: https://documents.openpay.mx/docs/api
   baseURL: https://api.openpay.mx/v1
   tags:
+  - Bank Accounts
+  tags_raw:
   - BankAccounts
   properties:
   - type: OpenAPI
@@ -177,6 +185,8 @@ apis:
   humanURL: https://documents.openpay.mx/docs/api
   baseURL: https://api.openpay.mx/v1
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -237,6 +247,8 @@ apis:
   humanURL: https://documents.openpay.mx/docs/api
   baseURL: https://api.openpay.mx/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
