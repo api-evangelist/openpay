@@ -7,6 +7,18 @@ description: Openpay is a Mexican and Colombian online payments platform, part o
   and bank transfers (SPEI). The API covers charges, customers, cards, tokens,
   subscriptions, plans, payouts, transfers, fees, and webhooks under a per-merchant
   base path with HTTP Basic authentication using a private API key.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
