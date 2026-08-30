@@ -55,7 +55,7 @@ apis:
   humanURL: https://documents.openpay.mx/docs/api
   baseURL: https://api.openpay.mx/v1
   tags:
-  - Bank Accounts
+  - BankAccounts
   tags_raw:
   - BankAccounts
   properties:
