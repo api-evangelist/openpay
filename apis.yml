@@ -50,28 +50,6 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.23'
 apis:
-- aid: openpay:openpay-bankaccounts-api
-  name: Openpay BankAccounts API
-  description: Manage customer bank accounts used as payout destinations.
-  humanURL: https://documents.openpay.mx/docs/api
-  baseURL: https://api.openpay.mx/v1
-  tags:
-  - Bank Accounts
-  tags_raw:
-  - BankAccounts
-  properties:
-  - type: OpenAPI
-    url: openapi/openpay-bankaccounts-api-openapi.yml
-  - type: Documentation
-    url: https://documents.openpay.mx/docs/api
-  - type: APIReference
-    url: https://documents.openpay.mx/docs/api
-  - type: PostmanCollection
-    url: collections/openpay.postman_collection.json
-  - type: OpenCollection
-    url: collections/openpay.opencollection.json
-  - type: Documentation
-    url: https://documents.openpay.mx/docs/webhooks.html
 - aid: openpay:openpay-cards-api
   name: Openpay Cards API
   description: Store and manage cards at merchant or customer level.
@@ -266,6 +244,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/openpay-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://documents.openpay.mx/docs/api
+  - type: APIReference
+    url: https://documents.openpay.mx/docs/api
+  - type: PostmanCollection
+    url: collections/openpay.postman_collection.json
+  - type: OpenCollection
+    url: collections/openpay.opencollection.json
+  - type: Documentation
+    url: https://documents.openpay.mx/docs/webhooks.html
+- aid: openpay:openpay-bank-accounts-api
+  name: Openpay Bank Accounts API
+  description: Manage customer bank accounts used as payout destinations.
+  humanURL: https://documents.openpay.mx/docs/api
+  baseURL: https://api.openpay.mx/v1
+  tags:
+  - Bank Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/openpay-bank-accounts-api-openapi.yml
   - type: Documentation
     url: https://documents.openpay.mx/docs/api
   - type: APIReference
