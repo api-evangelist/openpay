@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Openpay BankAccounts Customers API
-  description: REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.
+  title: Openpay Customers API
+  description: REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia.
   termsOfService: https://www.openpay.mx/terminos-y-condiciones.html
   contact:
     name: Openpay Support
@@ -30,7 +30,7 @@ paths:
       operationId: createCustomer
       tags:
       - Customers
-      summary: Create a customer.
+      summary: Create a customer
       requestBody:
         required: true
         content:
@@ -48,7 +48,7 @@ paths:
       operationId: listCustomers
       tags:
       - Customers
-      summary: List customers.
+      summary: List customers
       parameters:
       - $ref: '#/components/parameters/Creation'
       - $ref: '#/components/parameters/Offset'
@@ -70,7 +70,7 @@ paths:
       operationId: getCustomer
       tags:
       - Customers
-      summary: Get a customer by id.
+      summary: Get a customer by id
       responses:
         '200':
           description: The customer.
@@ -82,7 +82,7 @@ paths:
       operationId: updateCustomer
       tags:
       - Customers
-      summary: Update a customer.
+      summary: Update a customer
       requestBody:
         required: true
         content:
@@ -100,49 +100,11 @@ paths:
       operationId: deleteCustomer
       tags:
       - Customers
-      summary: Delete a customer.
+      summary: Delete a customer
       responses:
         '204':
           description: Customer deleted.
 components:
-  parameters:
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
-    Creation:
-      name: creation
-      in: query
-      required: false
-      description: Filter by creation date (yyyy-mm-dd).
-      schema:
-        type: string
-        format: date
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
   schemas:
     Customer:
       type: object
@@ -204,6 +166,44 @@ components:
           description: Whether the customer requires an Openpay balance account.
         address:
           $ref: '#/components/schemas/Address'
+  parameters:
+    Creation:
+      name: creation
+      in: query
+      required: false
+      description: Filter by creation date (yyyy-mm-dd).
+      schema:
+        type: string
+        format: date
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   securitySchemes:
     basicAuth:
       type: http

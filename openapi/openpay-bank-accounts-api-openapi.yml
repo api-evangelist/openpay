@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Openpay BankAccounts API
-  description: REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.
+  title: Openpay Bank Accounts API
+  description: REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia.
   termsOfService: https://www.openpay.mx/terminos-y-condiciones.html
   contact:
     name: Openpay Support
@@ -20,7 +20,7 @@ servers:
 security:
 - basicAuth: []
 tags:
-- name: BankAccounts
+- name: Bank Accounts
   description: Manage customer bank accounts used as payout destinations.
 paths:
   /{merchant_id}/customers/{customer_id}/bankaccounts:
@@ -30,8 +30,8 @@ paths:
     post:
       operationId: createBankAccount
       tags:
-      - BankAccounts
-      summary: Add a bank account to a customer.
+      - Bank Accounts
+      summary: Add a bank account to a customer
       requestBody:
         required: true
         content:
@@ -48,8 +48,8 @@ paths:
     get:
       operationId: listBankAccounts
       tags:
-      - BankAccounts
-      summary: List a customer's bank accounts.
+      - Bank Accounts
+      summary: List a customer's bank accounts
       responses:
         '200':
           description: A list of bank accounts.
@@ -71,8 +71,8 @@ paths:
     get:
       operationId: getBankAccount
       tags:
-      - BankAccounts
-      summary: Get a bank account by id.
+      - Bank Accounts
+      summary: Get a bank account by id
       responses:
         '200':
           description: The bank account.
@@ -83,8 +83,8 @@ paths:
     delete:
       operationId: deleteBankAccount
       tags:
-      - BankAccounts
-      summary: Delete a bank account.
+      - Bank Accounts
+      summary: Delete a bank account
       responses:
         '204':
           description: Bank account deleted.

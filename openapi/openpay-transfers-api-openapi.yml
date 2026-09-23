@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Openpay BankAccounts Transfers API
-  description: REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.
+  title: Openpay Transfers API
+  description: REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia.
   termsOfService: https://www.openpay.mx/terminos-y-condiciones.html
   contact:
     name: Openpay Support
@@ -31,7 +31,7 @@ paths:
       operationId: createTransfer
       tags:
       - Transfers
-      summary: Transfer funds from one customer to another.
+      summary: Transfer funds from one customer to another
       requestBody:
         required: true
         content:
@@ -49,7 +49,7 @@ paths:
       operationId: listTransfers
       tags:
       - Transfers
-      summary: List a customer's transfers.
+      summary: List a customer's transfers
       responses:
         '200':
           description: A list of transfers.
@@ -72,7 +72,7 @@ paths:
       operationId: getTransfer
       tags:
       - Transfers
-      summary: Get a transfer by id.
+      summary: Get a transfer by id
       responses:
         '200':
           description: The transfer.

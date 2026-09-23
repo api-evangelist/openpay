@@ -1,17 +1,7 @@
 {
   "provider": "openpay",
   "sources": [
-    "openpay-bankaccounts-api-openapi.yml",
-    "openpay-cards-api-openapi.yml",
-    "openpay-charges-api-openapi.yml",
-    "openpay-customers-api-openapi.yml",
-    "openpay-fees-api-openapi.yml",
-    "openpay-payouts-api-openapi.yml",
-    "openpay-plans-api-openapi.yml",
-    "openpay-subscriptions-api-openapi.yml",
-    "openpay-tokens-api-openapi.yml",
-    "openpay-transfers-api-openapi.yml",
-    "openpay-webhooks-api-openapi.yml"
+    "_original/openpay-openapi.yml"
   ],
   "outputs": [
     "openpay-bankaccounts-api-openapi.yml",
@@ -26,9 +16,28 @@
     "openpay-transfers-api-openapi.yml",
     "openpay-webhooks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openpay-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "superseded outputs removed: openpay-bank-accounts-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 11 total)"
+  ],
+  "skipped": [
+    "openpay-bank-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-cards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-charges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-fees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-payouts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-transfers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openpay-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

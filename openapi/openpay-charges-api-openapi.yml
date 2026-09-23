@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Openpay BankAccounts Charges API
-  description: REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia. Resources are scoped to a merchant under the path /v1/{merchant_id}. The API supports charges against cards, convenience stores (cash), and banks (SPEI); customers and stored cards; client-side tokens; recurring plans and subscriptions; payouts and transfers to bank accounts; commission fees; and webhook notifications. Authentication uses HTTP Basic auth with the merchant private API key as the username and an empty password.
+  title: Openpay Charges API
+  description: REST API for the Openpay online payments platform (BBVA group), available in Mexico and Colombia.
   termsOfService: https://www.openpay.mx/terminos-y-condiciones.html
   contact:
     name: Openpay Support
@@ -30,7 +30,7 @@ paths:
       operationId: createMerchantCharge
       tags:
       - Charges
-      summary: Create a charge at the merchant level.
+      summary: Create a charge at the merchant level
       description: Creates a charge against a card (saved card id, token, or raw card data), a store (cash), or a bank (SPEI). For card charges, set capture=false to authorize without capturing.
       requestBody:
         required: true
@@ -53,7 +53,7 @@ paths:
       operationId: listMerchantCharges
       tags:
       - Charges
-      summary: List charges at the merchant level.
+      summary: List charges at the merchant level
       parameters:
       - $ref: '#/components/parameters/Creation'
       - $ref: '#/components/parameters/Offset'
@@ -75,7 +75,7 @@ paths:
       operationId: getMerchantCharge
       tags:
       - Charges
-      summary: Get a charge by id.
+      summary: Get a charge by id
       responses:
         '200':
           description: The charge.
@@ -93,7 +93,7 @@ paths:
       operationId: refundMerchantCharge
       tags:
       - Charges
-      summary: Refund a charge.
+      summary: Refund a charge
       requestBody:
         required: false
         content:
@@ -115,7 +115,7 @@ paths:
       operationId: captureMerchantCharge
       tags:
       - Charges
-      summary: Capture a previously authorized charge.
+      summary: Capture a previously authorized charge
       requestBody:
         required: false
         content:
@@ -137,7 +137,7 @@ paths:
       operationId: createCustomerCharge
       tags:
       - Charges
-      summary: Create a charge at the customer level.
+      summary: Create a charge at the customer level
       requestBody:
         required: true
         content:
@@ -155,7 +155,7 @@ paths:
       operationId: listCustomerCharges
       tags:
       - Charges
-      summary: List a customer's charges.
+      summary: List a customer's charges
       parameters:
       - $ref: '#/components/parameters/Offset'
       - $ref: '#/components/parameters/Limit'
@@ -169,50 +169,6 @@ paths:
                 items:
                   $ref: '#/components/schemas/Charge'
 components:
-  parameters:
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    TransactionId:
-      name: transaction_id
-      in: path
-      required: true
-      schema:
-        type: string
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
-    Creation:
-      name: creation
-      in: query
-      required: false
-      description: Filter by creation date (yyyy-mm-dd).
-      schema:
-        type: string
-        format: date
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
   schemas:
     CaptureRequest:
       type: object
@@ -221,65 +177,6 @@ components:
           type: number
           format: float
           description: Amount to capture, up to the authorized amount.
-    ChargeCustomer:
-      type: object
-      properties:
-        name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        phone_number:
-          type: string
-    Error:
-      type: object
-      properties:
-        category:
-          type: string
-          enum:
-          - request
-          - internal
-          - gateway
-          description: Whether the error is in the request, internal, or at the gateway.
-        error_code:
-          type: integer
-          description: Openpay-specific error code.
-        description:
-          type: string
-        http_code:
-          type: integer
-        request_id:
-          type: string
-        fraud_rules:
-          type: array
-          items:
-            type: string
-    PaymentMethod:
-      type: object
-      description: Method-specific payment details, present for store and bank charges (e.g. reference, barcode_url, clabe, agreement, name).
-      properties:
-        type:
-          type: string
-        reference:
-          type: string
-        barcode_url:
-          type: string
-        clabe:
-          type: string
-        agreement:
-          type: string
-        name:
-          type: string
-    RefundRequest:
-      type: object
-      properties:
-        description:
-          type: string
-        amount:
-          type: number
-          format: float
-          description: Optional partial refund amount.
     CreateCharge:
       type: object
       required:
@@ -317,35 +214,6 @@ components:
           description: Set false to authorize without capturing.
         customer:
           $ref: '#/components/schemas/ChargeCustomer'
-    Card:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - debit
-          - credit
-        brand:
-          type: string
-          example: visa
-        card_number:
-          type: string
-          description: Masked card number.
-        holder_name:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
-        bank_name:
-          type: string
-        bank_code:
-          type: string
-        creation_date:
-          type: string
-          format: date-time
     Charge:
       type: object
       properties:
@@ -390,6 +258,138 @@ components:
           $ref: '#/components/schemas/PaymentMethod'
         error_message:
           type: string
+    PaymentMethod:
+      type: object
+      description: Method-specific payment details, present for store and bank charges (e.g. reference, barcode_url, clabe, agreement, name).
+      properties:
+        type:
+          type: string
+        reference:
+          type: string
+        barcode_url:
+          type: string
+        clabe:
+          type: string
+        agreement:
+          type: string
+        name:
+          type: string
+    RefundRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        amount:
+          type: number
+          format: float
+          description: Optional partial refund amount.
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - debit
+          - credit
+        brand:
+          type: string
+          example: visa
+        card_number:
+          type: string
+          description: Masked card number.
+        holder_name:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+        bank_name:
+          type: string
+        bank_code:
+          type: string
+        creation_date:
+          type: string
+          format: date-time
+    ChargeCustomer:
+      type: object
+      properties:
+        name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
+    Error:
+      type: object
+      properties:
+        category:
+          type: string
+          enum:
+          - request
+          - internal
+          - gateway
+          description: Whether the error is in the request, internal, or at the gateway.
+        error_code:
+          type: integer
+          description: Openpay-specific error code.
+        description:
+          type: string
+        http_code:
+          type: integer
+        request_id:
+          type: string
+        fraud_rules:
+          type: array
+          items:
+            type: string
+  parameters:
+    TransactionId:
+      name: transaction_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Creation:
+      name: creation
+      in: query
+      required: false
+      description: Filter by creation date (yyyy-mm-dd).
+      schema:
+        type: string
+        format: date
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   responses:
     Error:
       description: An Openpay error response.
