@@ -81,21 +81,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/Transfer'
 components:
-  parameters:
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
   schemas:
+    CreateTransfer:
+      type: object
+      required:
+      - customer_id
+      - amount
+      properties:
+        customer_id:
+          type: string
+          description: Destination customer id.
+        amount:
+          type: number
+          format: float
+        description:
+          type: string
+        order_id:
+          type: string
     Transfer:
       type: object
       properties:
@@ -115,22 +117,20 @@ components:
         creation_date:
           type: string
           format: date-time
-    CreateTransfer:
-      type: object
-      required:
-      - customer_id
-      - amount
-      properties:
-        customer_id:
-          type: string
-          description: Destination customer id.
-        amount:
-          type: number
-          format: float
-        description:
-          type: string
-        order_id:
-          type: string
+  parameters:
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

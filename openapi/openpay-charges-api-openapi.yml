@@ -170,13 +170,35 @@ paths:
                   $ref: '#/components/schemas/Charge'
 components:
   schemas:
-    CaptureRequest:
+    Card:
       type: object
       properties:
-        amount:
-          type: number
-          format: float
-          description: Amount to capture, up to the authorized amount.
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - debit
+          - credit
+        brand:
+          type: string
+          example: visa
+        card_number:
+          type: string
+          description: Masked card number.
+        holder_name:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+        bank_name:
+          type: string
+        bank_code:
+          type: string
+        creation_date:
+          type: string
+          format: date-time
     CreateCharge:
       type: object
       required:
@@ -214,6 +236,72 @@ components:
           description: Set false to authorize without capturing.
         customer:
           $ref: '#/components/schemas/ChargeCustomer'
+    Error:
+      type: object
+      properties:
+        category:
+          type: string
+          enum:
+          - request
+          - internal
+          - gateway
+          description: Whether the error is in the request, internal, or at the gateway.
+        error_code:
+          type: integer
+          description: Openpay-specific error code.
+        description:
+          type: string
+        http_code:
+          type: integer
+        request_id:
+          type: string
+        fraud_rules:
+          type: array
+          items:
+            type: string
+    PaymentMethod:
+      type: object
+      description: Method-specific payment details, present for store and bank charges (e.g. reference, barcode_url, clabe, agreement, name).
+      properties:
+        type:
+          type: string
+        reference:
+          type: string
+        barcode_url:
+          type: string
+        clabe:
+          type: string
+        agreement:
+          type: string
+        name:
+          type: string
+    ChargeCustomer:
+      type: object
+      properties:
+        name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
+    CaptureRequest:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: float
+          description: Amount to capture, up to the authorized amount.
+    RefundRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        amount:
+          type: number
+          format: float
+          description: Optional partial refund amount.
     Charge:
       type: object
       properties:
@@ -258,101 +346,23 @@ components:
           $ref: '#/components/schemas/PaymentMethod'
         error_message:
           type: string
-    PaymentMethod:
-      type: object
-      description: Method-specific payment details, present for store and bank charges (e.g. reference, barcode_url, clabe, agreement, name).
-      properties:
-        type:
-          type: string
-        reference:
-          type: string
-        barcode_url:
-          type: string
-        clabe:
-          type: string
-        agreement:
-          type: string
-        name:
-          type: string
-    RefundRequest:
-      type: object
-      properties:
-        description:
-          type: string
-        amount:
-          type: number
-          format: float
-          description: Optional partial refund amount.
-    Card:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - debit
-          - credit
-        brand:
-          type: string
-          example: visa
-        card_number:
-          type: string
-          description: Masked card number.
-        holder_name:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
-        bank_name:
-          type: string
-        bank_code:
-          type: string
-        creation_date:
-          type: string
-          format: date-time
-    ChargeCustomer:
-      type: object
-      properties:
-        name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        phone_number:
-          type: string
-    Error:
-      type: object
-      properties:
-        category:
-          type: string
-          enum:
-          - request
-          - internal
-          - gateway
-          description: Whether the error is in the request, internal, or at the gateway.
-        error_code:
-          type: integer
-          description: Openpay-specific error code.
-        description:
-          type: string
-        http_code:
-          type: integer
-        request_id:
-          type: string
-        fraud_rules:
-          type: array
-          items:
-            type: string
   parameters:
-    TransactionId:
-      name: transaction_id
-      in: path
-      required: true
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
       schema:
-        type: string
+        type: integer
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
     Creation:
       name: creation
       in: query
@@ -374,22 +384,12 @@ components:
       required: true
       schema:
         type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
+    TransactionId:
+      name: transaction_id
+      in: path
+      required: true
       schema:
-        type: integer
-        default: 10
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
+        type: string
   responses:
     Error:
       description: An Openpay error response.

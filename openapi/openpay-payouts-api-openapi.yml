@@ -84,7 +84,58 @@ paths:
               schema:
                 $ref: '#/components/schemas/Payout'
 components:
+  parameters:
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
+    CreatePayout:
+      type: object
+      required:
+      - method
+      - amount
+      properties:
+        method:
+          type: string
+          enum:
+          - bank_account
+          default: bank_account
+        destination_id:
+          type: string
+          description: Id of the registered bank account to receive the payout.
+        amount:
+          type: number
+          format: float
+        description:
+          type: string
+        order_id:
+          type: string
     Payout:
       type: object
       properties:
@@ -126,57 +177,6 @@ components:
         creation_date:
           type: string
           format: date-time
-    CreatePayout:
-      type: object
-      required:
-      - method
-      - amount
-      properties:
-        method:
-          type: string
-          enum:
-          - bank_account
-          default: bank_account
-        destination_id:
-          type: string
-          description: Id of the registered bank account to receive the payout.
-        amount:
-          type: number
-          format: float
-        description:
-          type: string
-        order_id:
-          type: string
-  parameters:
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   securitySchemes:
     basicAuth:
       type: http

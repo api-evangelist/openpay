@@ -67,52 +67,6 @@ paths:
                 $ref: '#/components/schemas/Token'
 components:
   schemas:
-    CreateToken:
-      type: object
-      required:
-      - card_number
-      - holder_name
-      - expiration_year
-      - expiration_month
-      - cvv2
-      properties:
-        card_number:
-          type: string
-        holder_name:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
-        cvv2:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-    Address:
-      type: object
-      properties:
-        line1:
-          type: string
-        line2:
-          type: string
-        line3:
-          type: string
-        postal_code:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-        country_code:
-          type: string
-          example: MX
-    Token:
-      type: object
-      properties:
-        id:
-          type: string
-        card:
-          $ref: '#/components/schemas/Card'
     Card:
       type: object
       properties:
@@ -142,6 +96,52 @@ components:
         creation_date:
           type: string
           format: date-time
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        line3:
+          type: string
+        postal_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        country_code:
+          type: string
+          example: MX
+    CreateToken:
+      type: object
+      required:
+      - card_number
+      - holder_name
+      - expiration_year
+      - expiration_month
+      - cvv2
+      properties:
+        card_number:
+          type: string
+        holder_name:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+        cvv2:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+        card:
+          $ref: '#/components/schemas/Card'
   parameters:
     MerchantId:
       name: merchant_id

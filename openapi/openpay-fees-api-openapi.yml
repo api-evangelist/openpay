@@ -62,7 +62,47 @@ paths:
                 items:
                   $ref: '#/components/schemas/Fee'
 components:
+  parameters:
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
   schemas:
+    CreateFee:
+      type: object
+      required:
+      - customer_id
+      - amount
+      properties:
+        customer_id:
+          type: string
+          description: Customer whose balance is charged the fee.
+        amount:
+          type: number
+          format: float
+        description:
+          type: string
+        order_id:
+          type: string
     Fee:
       type: object
       properties:
@@ -82,46 +122,6 @@ components:
         creation_date:
           type: string
           format: date-time
-    CreateFee:
-      type: object
-      required:
-      - customer_id
-      - amount
-      properties:
-        customer_id:
-          type: string
-          description: Customer whose balance is charged the fee.
-        amount:
-          type: number
-          format: float
-        description:
-          type: string
-        order_id:
-          type: string
-  parameters:
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   securitySchemes:
     basicAuth:
       type: http

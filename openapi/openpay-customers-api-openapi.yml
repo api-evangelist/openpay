@@ -106,6 +106,25 @@ paths:
           description: Customer deleted.
 components:
   schemas:
+    CreateCustomer:
+      type: object
+      required:
+      - name
+      - email
+      properties:
+        name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
+        requires_account:
+          type: boolean
+          description: Whether the customer requires an Openpay balance account.
+        address:
+          $ref: '#/components/schemas/Address'
     Customer:
       type: object
       properties:
@@ -147,26 +166,23 @@ components:
         country_code:
           type: string
           example: MX
-    CreateCustomer:
-      type: object
-      required:
-      - name
-      - email
-      properties:
-        name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        phone_number:
-          type: string
-        requires_account:
-          type: boolean
-          description: Whether the customer requires an Openpay balance account.
-        address:
-          $ref: '#/components/schemas/Address'
   parameters:
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
     Creation:
       name: creation
       in: query
@@ -188,22 +204,6 @@ components:
       required: true
       schema:
         type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   securitySchemes:
     basicAuth:
       type: http
