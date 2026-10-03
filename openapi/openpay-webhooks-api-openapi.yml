@@ -88,24 +88,6 @@ paths:
           description: Webhook deleted.
 components:
   schemas:
-    Webhook:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        user:
-          type: string
-        event_types:
-          type: array
-          items:
-            type: string
-        status:
-          type: string
-          enum:
-          - verified
-          - unverified
     CreateWebhook:
       type: object
       required:
@@ -150,6 +132,24 @@ components:
             - order.cancelled
             - order.payment.cancelled
             - verification
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        user:
+          type: string
+        event_types:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum:
+          - verified
+          - unverified
   parameters:
     MerchantId:
       name: merchant_id

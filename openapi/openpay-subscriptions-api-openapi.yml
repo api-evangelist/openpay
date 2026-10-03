@@ -108,21 +108,6 @@ paths:
           description: Subscription cancelled.
 components:
   schemas:
-    CreateSubscription:
-      type: object
-      required:
-      - plan_id
-      properties:
-        plan_id:
-          type: string
-        trial_end_date:
-          type: string
-          format: date
-        source_id:
-          type: string
-          description: Stored card id or token id to charge.
-        card:
-          $ref: '#/components/schemas/CreateCard'
     Card:
       type: object
       properties:
@@ -152,24 +137,6 @@ components:
         creation_date:
           type: string
           format: date-time
-    CreateCard:
-      type: object
-      properties:
-        card_number:
-          type: string
-        holder_name:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
-        cvv2:
-          type: string
-        device_session_id:
-          type: string
-        token_id:
-          type: string
-          description: Provide a token id instead of raw card data.
     Subscription:
       type: object
       properties:
@@ -205,18 +172,51 @@ components:
           format: date
         card:
           $ref: '#/components/schemas/Card'
+    CreateCard:
+      type: object
+      properties:
+        card_number:
+          type: string
+        holder_name:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+        cvv2:
+          type: string
+        device_session_id:
+          type: string
+        token_id:
+          type: string
+          description: Provide a token id instead of raw card data.
+    CreateSubscription:
+      type: object
+      required:
+      - plan_id
+      properties:
+        plan_id:
+          type: string
+        trial_end_date:
+          type: string
+          format: date
+        source_id:
+          type: string
+          description: Stored card id or token id to charge.
+        card:
+          $ref: '#/components/schemas/CreateCard'
   parameters:
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
     MerchantId:
       name: merchant_id
       in: path
       required: true
       description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
       schema:
         type: string
   securitySchemes:

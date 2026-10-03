@@ -193,11 +193,10 @@ components:
           type: string
           description: Provide a token id instead of raw card data.
   parameters:
-    MerchantId:
-      name: merchant_id
+    CardId:
+      name: card_id
       in: path
       required: true
-      description: The merchant identifier that scopes all resources.
       schema:
         type: string
     CustomerId:
@@ -206,10 +205,11 @@ components:
       required: true
       schema:
         type: string
-    CardId:
-      name: card_id
+    MerchantId:
+      name: merchant_id
       in: path
       required: true
+      description: The merchant identifier that scopes all resources.
       schema:
         type: string
   securitySchemes:

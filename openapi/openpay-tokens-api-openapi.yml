@@ -114,6 +114,13 @@ components:
         country_code:
           type: string
           example: MX
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+        card:
+          $ref: '#/components/schemas/Card'
     CreateToken:
       type: object
       required:
@@ -135,13 +142,6 @@ components:
           type: string
         address:
           $ref: '#/components/schemas/Address'
-    Token:
-      type: object
-      properties:
-        id:
-          type: string
-        card:
-          $ref: '#/components/schemas/Card'
   parameters:
     MerchantId:
       name: merchant_id
