@@ -275,6 +275,9 @@ apis:
   - type: Documentation
     url: https://documents.openpay.mx/docs/webhooks.html
 common:
+- type: CapabilityMap
+  url: capabilities/openpay-capability-edges.yml
+  name: Openpay Business Capability Map
 - type: AgenticAccess
   url: agentic-access/openpay-agentic-access.yml
 - type: DomainSecurity

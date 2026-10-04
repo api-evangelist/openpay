@@ -1,0 +1,55 @@
+slug: openpay
+provider: Openpay
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Subscriptions
+  spec_file: openpay-subscriptions-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.8
+  evidence: createSubscription  Create a subscription for a customer; updateSubscription; cancelSubscription  Cancel
+    a subscription
+  reason: Operations cover the full subscription lifecycle — creation, in-life modification and cancellation
+    — for a customer, which is Subscription Lifecycle Management. No single L2 fits since the surface
+    spans provisioning, modification and cancellation.
+- tag: Charges
+  spec_file: openpay-charges-api-openapi.yml
+  capability_id: BC-4250.40
+  capability_id_l1: BC-4250
+  capability_name: Payment Collection & Dunning
+  confidence: 0.75
+  evidence: '"Create a charge at the merchant level"; "Capture a previously authorized charge"; "Refund
+    a charge"; schema PaymentMethod'
+  reason: Authorisation, capture and refund of customer payments — payment authorisation and collection;
+    the only candidate that matches payment acceptance mechanics.
+- tag: Webhooks
+  spec_file: openpay-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.72
+  evidence: POST /{merchant_id}/webhooks  createWebhook  Register a webhook endpoint; listWebhooks; deleteWebhook
+  reason: The surface is the lifecycle of outbound webhook subscriptions exposed to integrating developers,
+    which the frame names explicitly as Webhook & Event Subscription Management. Still largely integration
+    plumbing, hence moderate confidence.
+- tag: Cards
+  spec_file: openpay-cards-api-openapi.yml
+  capability_id: BC-4250.40
+  capability_id_l1: BC-4250
+  capability_name: Payment Collection & Dunning
+  confidence: 0.7
+  evidence: '"Store a card for a customer"; "List a customer''s cards"; schemas Card, CreateCard'
+  reason: Vaulting and lifecycle of customer and merchant card instruments on a payments platform — payment-method
+    management within payment collection.
