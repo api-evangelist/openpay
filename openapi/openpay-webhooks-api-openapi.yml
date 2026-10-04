@@ -87,7 +87,33 @@ paths:
         '204':
           description: Webhook deleted.
 components:
+  parameters:
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
   schemas:
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        user:
+          type: string
+        event_types:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum:
+          - verified
+          - unverified
     CreateWebhook:
       type: object
       required:
@@ -132,32 +158,6 @@ components:
             - order.cancelled
             - order.payment.cancelled
             - verification
-    Webhook:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        user:
-          type: string
-        event_types:
-          type: array
-          items:
-            type: string
-        status:
-          type: string
-          enum:
-          - verified
-          - unverified
-  parameters:
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

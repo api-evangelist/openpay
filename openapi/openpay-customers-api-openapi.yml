@@ -106,22 +106,6 @@ paths:
           description: Customer deleted.
 components:
   parameters:
-    Creation:
-      name: creation
-      in: query
-      required: false
-      description: Filter by creation date (yyyy-mm-dd).
-      schema:
-        type: string
-        format: date
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
     CustomerId:
       name: customer_id
       in: path
@@ -136,6 +120,22 @@ components:
       schema:
         type: integer
         default: 10
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    Creation:
+      name: creation
+      in: query
+      required: false
+      description: Filter by creation date (yyyy-mm-dd).
+      schema:
+        type: string
+        format: date
     MerchantId:
       name: merchant_id
       in: path
@@ -162,25 +162,6 @@ components:
         country_code:
           type: string
           example: MX
-    CreateCustomer:
-      type: object
-      required:
-      - name
-      - email
-      properties:
-        name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        phone_number:
-          type: string
-        requires_account:
-          type: boolean
-          description: Whether the customer requires an Openpay balance account.
-        address:
-          $ref: '#/components/schemas/Address'
     Customer:
       type: object
       properties:
@@ -202,6 +183,25 @@ components:
         creation_date:
           type: string
           format: date-time
+        address:
+          $ref: '#/components/schemas/Address'
+    CreateCustomer:
+      type: object
+      required:
+      - name
+      - email
+      properties:
+        name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
+        requires_account:
+          type: boolean
+          description: Whether the customer requires an Openpay balance account.
         address:
           $ref: '#/components/schemas/Address'
   securitySchemes:

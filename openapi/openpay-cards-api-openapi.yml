@@ -144,7 +144,45 @@ paths:
         '204':
           description: Card deleted.
 components:
+  parameters:
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+    CardId:
+      name: card_id
+      in: path
+      required: true
+      schema:
+        type: string
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
   schemas:
+    CreateCard:
+      type: object
+      properties:
+        card_number:
+          type: string
+        holder_name:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+        cvv2:
+          type: string
+        device_session_id:
+          type: string
+        token_id:
+          type: string
+          description: Provide a token id instead of raw card data.
     Card:
       type: object
       properties:
@@ -174,44 +212,6 @@ components:
         creation_date:
           type: string
           format: date-time
-    CreateCard:
-      type: object
-      properties:
-        card_number:
-          type: string
-        holder_name:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
-        cvv2:
-          type: string
-        device_session_id:
-          type: string
-        token_id:
-          type: string
-          description: Provide a token id instead of raw card data.
-  parameters:
-    CardId:
-      name: card_id
-      in: path
-      required: true
-      schema:
-        type: string
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

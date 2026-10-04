@@ -148,14 +148,6 @@ components:
           type: string
           format: date-time
   parameters:
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
     CustomerId:
       name: customer_id
       in: path
@@ -170,6 +162,14 @@ components:
       schema:
         type: integer
         default: 10
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
     MerchantId:
       name: merchant_id
       in: path

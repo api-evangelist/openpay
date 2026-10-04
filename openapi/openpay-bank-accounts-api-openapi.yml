@@ -122,17 +122,17 @@ components:
         holder_name:
           type: string
   parameters:
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
     MerchantId:
       name: merchant_id
       in: path
       required: true
       description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
       schema:
         type: string
   securitySchemes:

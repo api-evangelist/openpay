@@ -108,35 +108,21 @@ paths:
           description: Subscription cancelled.
 components:
   schemas:
-    Card:
+    CreateSubscription:
       type: object
+      required:
+      - plan_id
       properties:
-        id:
+        plan_id:
           type: string
-        type:
+        trial_end_date:
           type: string
-          enum:
-          - debit
-          - credit
-        brand:
+          format: date
+        source_id:
           type: string
-          example: visa
-        card_number:
-          type: string
-          description: Masked card number.
-        holder_name:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
-        bank_name:
-          type: string
-        bank_code:
-          type: string
-        creation_date:
-          type: string
-          format: date-time
+          description: Stored card id or token id to charge.
+        card:
+          $ref: '#/components/schemas/CreateCard'
     Subscription:
       type: object
       properties:
@@ -190,21 +176,35 @@ components:
         token_id:
           type: string
           description: Provide a token id instead of raw card data.
-    CreateSubscription:
+    Card:
       type: object
-      required:
-      - plan_id
       properties:
-        plan_id:
+        id:
           type: string
-        trial_end_date:
+        type:
           type: string
-          format: date
-        source_id:
+          enum:
+          - debit
+          - credit
+        brand:
           type: string
-          description: Stored card id or token id to charge.
-        card:
-          $ref: '#/components/schemas/CreateCard'
+          example: visa
+        card_number:
+          type: string
+          description: Masked card number.
+        holder_name:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+        bank_name:
+          type: string
+        bank_code:
+          type: string
+        creation_date:
+          type: string
+          format: date-time
   parameters:
     CustomerId:
       name: customer_id

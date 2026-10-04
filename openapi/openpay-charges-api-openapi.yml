@@ -169,51 +169,56 @@ paths:
                 items:
                   $ref: '#/components/schemas/Charge'
 components:
-  parameters:
-    Creation:
-      name: creation
-      in: query
-      required: false
-      description: Filter by creation date (yyyy-mm-dd).
-      schema:
-        type: string
-        format: date
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
-    TransactionId:
-      name: transaction_id
-      in: path
-      required: true
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
   schemas:
+    ChargeCustomer:
+      type: object
+      properties:
+        name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
+    RefundRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        amount:
+          type: number
+          format: float
+          description: Optional partial refund amount.
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - debit
+          - credit
+        brand:
+          type: string
+          example: visa
+        card_number:
+          type: string
+          description: Masked card number.
+        holder_name:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+        bank_name:
+          type: string
+        bank_code:
+          type: string
+        creation_date:
+          type: string
+          format: date-time
     Charge:
       type: object
       properties:
@@ -258,62 +263,43 @@ components:
           $ref: '#/components/schemas/PaymentMethod'
         error_message:
           type: string
-    Card:
+    CreateCharge:
       type: object
+      required:
+      - method
+      - amount
       properties:
-        id:
-          type: string
-        type:
+        method:
           type: string
           enum:
-          - debit
-          - credit
-        brand:
+          - card
+          - store
+          - bank_account
+          description: The payment method for the charge.
+        source_id:
           type: string
-          example: visa
-        card_number:
-          type: string
-          description: Masked card number.
-        holder_name:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
-        bank_name:
-          type: string
-        bank_code:
-          type: string
-        creation_date:
-          type: string
-          format: date-time
-    CaptureRequest:
-      type: object
-      properties:
+          description: A stored card id or a token id (for card charges).
         amount:
           type: number
           format: float
-          description: Amount to capture, up to the authorized amount.
-    ChargeCustomer:
-      type: object
-      properties:
-        name:
+          description: Charge amount in the merchant currency.
+        currency:
           type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        phone_number:
-          type: string
-    RefundRequest:
-      type: object
-      properties:
+          example: MXN
         description:
           type: string
-        amount:
-          type: number
-          format: float
-          description: Optional partial refund amount.
+        order_id:
+          type: string
+          description: Unique merchant order identifier.
+        device_session_id:
+          type: string
+          description: Anti-fraud device session id captured client-side.
+        capture:
+          type: boolean
+          default: true
+          description: Set false to authorize without capturing.
+        customer:
+          $ref: '#/components/schemas/ChargeCustomer'
     PaymentMethod:
       type: object
       description: Method-specific payment details, present for store and bank charges (e.g. reference, barcode_url, clabe, agreement, name).
@@ -353,43 +339,57 @@ components:
           type: array
           items:
             type: string
-    CreateCharge:
+    CaptureRequest:
       type: object
-      required:
-      - method
-      - amount
       properties:
-        method:
-          type: string
-          enum:
-          - card
-          - store
-          - bank_account
-          description: The payment method for the charge.
-        source_id:
-          type: string
-          description: A stored card id or a token id (for card charges).
         amount:
           type: number
           format: float
-          description: Charge amount in the merchant currency.
-        currency:
-          type: string
-          example: MXN
-        description:
-          type: string
-        order_id:
-          type: string
-          description: Unique merchant order identifier.
-        device_session_id:
-          type: string
-          description: Anti-fraud device session id captured client-side.
-        capture:
-          type: boolean
-          default: true
-          description: Set false to authorize without capturing.
-        customer:
-          $ref: '#/components/schemas/ChargeCustomer'
+          description: Amount to capture, up to the authorized amount.
+  parameters:
+    TransactionId:
+      name: transaction_id
+      in: path
+      required: true
+      schema:
+        type: string
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+    Creation:
+      name: creation
+      in: query
+      required: false
+      description: Filter by creation date (yyyy-mm-dd).
+      schema:
+        type: string
+        format: date
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
   responses:
     Error:
       description: An Openpay error response.
