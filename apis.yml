@@ -47,7 +47,7 @@ tags_raw:
 - SPEI
 - Subscriptions
 created: '2026-06-21'
-modified: '2026-06-21'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: openpay:openpay-cards-api
@@ -275,6 +275,8 @@ apis:
   - type: Documentation
     url: https://documents.openpay.mx/docs/webhooks.html
 common:
+- url: https://www.openpay.mx/blog/
+  type: Blog
 - type: CapabilityMap
   url: capabilities/openpay-capability-edges.yml
   name: Openpay Business Capability Map
