@@ -89,6 +89,20 @@ paths:
         '204':
           description: Bank account deleted.
 components:
+  parameters:
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
     BankAccount:
       type: object
@@ -121,20 +135,6 @@ components:
           type: string
         holder_name:
           type: string
-  parameters:
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

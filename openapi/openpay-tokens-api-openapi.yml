@@ -67,6 +67,31 @@ paths:
                 $ref: '#/components/schemas/Token'
 components:
   schemas:
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        line3:
+          type: string
+        postal_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        country_code:
+          type: string
+          example: MX
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+        card:
+          $ref: '#/components/schemas/Card'
     Card:
       type: object
       properties:
@@ -96,31 +121,6 @@ components:
         creation_date:
           type: string
           format: date-time
-    Address:
-      type: object
-      properties:
-        line1:
-          type: string
-        line2:
-          type: string
-        line3:
-          type: string
-        postal_code:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-        country_code:
-          type: string
-          example: MX
-    Token:
-      type: object
-      properties:
-        id:
-          type: string
-        card:
-          $ref: '#/components/schemas/Card'
     CreateToken:
       type: object
       required:

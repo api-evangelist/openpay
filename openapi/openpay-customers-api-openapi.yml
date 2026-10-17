@@ -105,44 +105,6 @@ paths:
         '204':
           description: Customer deleted.
 components:
-  parameters:
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    Creation:
-      name: creation
-      in: query
-      required: false
-      description: Filter by creation date (yyyy-mm-dd).
-      schema:
-        type: string
-        format: date
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
   schemas:
     Address:
       type: object
@@ -204,6 +166,44 @@ components:
           description: Whether the customer requires an Openpay balance account.
         address:
           $ref: '#/components/schemas/Address'
+  parameters:
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    Creation:
+      name: creation
+      in: query
+      required: false
+      description: Filter by creation date (yyyy-mm-dd).
+      schema:
+        type: string
+        format: date
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   securitySchemes:
     basicAuth:
       type: http

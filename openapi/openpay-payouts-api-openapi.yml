@@ -84,22 +84,57 @@ paths:
               schema:
                 $ref: '#/components/schemas/Payout'
 components:
+  parameters:
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   schemas:
-    BankAccount:
+    Payout:
       type: object
       properties:
         id:
           type: string
-        clabe:
+        amount:
+          type: number
+          format: float
+        currency:
           type: string
-        alias:
+        method:
           type: string
-        holder_name:
+        status:
           type: string
-        bank_name:
+        description:
           type: string
-        bank_code:
+        order_id:
           type: string
+        bank_account:
+          $ref: '#/components/schemas/BankAccount'
         creation_date:
           type: string
           format: date-time
@@ -124,59 +159,24 @@ components:
           type: string
         order_id:
           type: string
-    Payout:
+    BankAccount:
       type: object
       properties:
         id:
           type: string
-        amount:
-          type: number
-          format: float
-        currency:
+        clabe:
           type: string
-        method:
+        alias:
           type: string
-        status:
+        holder_name:
           type: string
-        description:
+        bank_name:
           type: string
-        order_id:
+        bank_code:
           type: string
-        bank_account:
-          $ref: '#/components/schemas/BankAccount'
         creation_date:
           type: string
           format: date-time
-  parameters:
-    CustomerId:
-      name: customer_id
-      in: path
-      required: true
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

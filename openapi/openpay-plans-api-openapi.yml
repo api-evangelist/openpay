@@ -108,7 +108,58 @@ paths:
         '204':
           description: Plan deleted.
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+    MerchantId:
+      name: merchant_id
+      in: path
+      required: true
+      description: The merchant identifier that scopes all resources.
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   schemas:
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+        repeat_every:
+          type: integer
+        repeat_unit:
+          type: string
+        retry_times:
+          type: integer
+        status:
+          type: string
+        status_after_retry:
+          type: string
+        trial_days:
+          type: integer
+        creation_date:
+          type: string
+          format: date-time
     CreatePlan:
       type: object
       required:
@@ -140,57 +191,6 @@ components:
           - cancelled
         trial_days:
           type: integer
-    Plan:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        amount:
-          type: number
-          format: float
-        currency:
-          type: string
-        repeat_every:
-          type: integer
-        repeat_unit:
-          type: string
-        retry_times:
-          type: integer
-        status:
-          type: string
-        status_after_retry:
-          type: string
-        trial_days:
-          type: integer
-        creation_date:
-          type: string
-          format: date-time
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    MerchantId:
-      name: merchant_id
-      in: path
-      required: true
-      description: The merchant identifier that scopes all resources.
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

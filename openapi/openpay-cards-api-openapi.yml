@@ -165,24 +165,6 @@ components:
       schema:
         type: string
   schemas:
-    CreateCard:
-      type: object
-      properties:
-        card_number:
-          type: string
-        holder_name:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
-        cvv2:
-          type: string
-        device_session_id:
-          type: string
-        token_id:
-          type: string
-          description: Provide a token id instead of raw card data.
     Card:
       type: object
       properties:
@@ -212,6 +194,24 @@ components:
         creation_date:
           type: string
           format: date-time
+    CreateCard:
+      type: object
+      properties:
+        card_number:
+          type: string
+        holder_name:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+        cvv2:
+          type: string
+        device_session_id:
+          type: string
+        token_id:
+          type: string
+          description: Provide a token id instead of raw card data.
   securitySchemes:
     basicAuth:
       type: http
