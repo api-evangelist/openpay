@@ -1,4 +1,4 @@
-# Openpay (openpay)
+# Openpay
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,165 +66,136 @@
 
 Openpay is a Mexican and Colombian online payments platform, part of the BBVA group, offering a REST API for accepting card payments, cash/store payments, and bank transfers (SPEI). The API covers charges, customers, cards, tokens, subscriptions, plans, payouts, transfers, fees, and webhooks under a per-merchant base path with HTTP Basic authentication using a private API key.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/openpay/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/openpay/refs/heads/main/apis.yml)
+**Areas:** Payments · Fintech · Cards · SPEI · Subscription
 
-## Tags
+## Openpay on APIs.io
 
-- Payments
-- Fintech
-- Cards
-- SPEI
-- Subscriptions
+Everything profiled for Openpay is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/openpay/](https://apis.io/providers/openpay/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (11)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Openpay Cards API](https://apis.io/apis/openpay/openpay-cards-api/) — Store and manage cards at merchant or customer level.
+- [Openpay Charges API](https://apis.io/apis/openpay/openpay-charges-api/) — Create and manage charges to cards, stores, and banks.
+- [Openpay Customers API](https://apis.io/apis/openpay/openpay-customers-api/) — Manage customer records.
+- [Openpay Fees API](https://apis.io/apis/openpay/openpay-fees-api/) — Charge commission fees to a customer's Openpay balance.
+- [Openpay Payouts API](https://apis.io/apis/openpay/openpay-payouts-api/) — Send funds to registered bank accounts.
+- [Openpay Plans API](https://apis.io/apis/openpay/openpay-plans-api/) — Templates defining amount and frequency for recurring charges.
+- [Openpay Subscriptions API](https://apis.io/apis/openpay/openpay-subscriptions-api/) — Associate customers and cards to plans for recurring billing.
+- [Openpay Tokens API](https://apis.io/apis/openpay/openpay-tokens-api/) — Client-side tokenization of card data.
+- [Openpay Transfers API](https://apis.io/apis/openpay/openpay-transfers-api/) — Move funds between Openpay customers.
+- [Openpay Webhooks API](https://apis.io/apis/openpay/openpay-webhooks-api/) — Register and manage webhook endpoints for event notifications.
+- [Openpay Bank Accounts API](https://apis.io/apis/openpay/openpay-bank-accounts-api/) — Manage customer bank accounts used as payout destinations.
 
-## APIs
+### Published properties
 
-### Openpay Charges API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create and manage charges against cards, convenience stores (cash), and banks (SPEI) at both merchant and customer level, including capture, refund, and listing of transactions.
+#### Agentic access (1)
 
-- **Human URL:** [https://documents.openpay.mx/docs/api](https://documents.openpay.mx/docs/api)
-- **Base URL:** `https://api.openpay.mx/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Openpay Agentic Access](https://apis.io/agentic-access/openpay/openpay-agentic-access/)
 
-- Charges
-- Payments
-- Cards
-- Store
-- SPEI
+#### Collections (12)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://documents.openpay.mx/docs/api)
-- [API Reference](https://documents.openpay.mx/docs/api)
-- [OpenAPI](openapi/openpay-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openpay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openpay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Openpay API](https://apis.io/collections/openpay/open-openpay/)
+- [Openpay BankAccounts API](https://apis.io/collections/openpay/open-openpay-bankaccounts-api/)
+- [Openpay BankAccounts Cards API](https://apis.io/collections/openpay/open-openpay-cards-api/)
+- [Openpay BankAccounts Charges API](https://apis.io/collections/openpay/open-openpay-charges-api/)
+- [Openpay BankAccounts Customers API](https://apis.io/collections/openpay/open-openpay-customers-api/)
+- [Openpay BankAccounts Fees API](https://apis.io/collections/openpay/open-openpay-fees-api/)
+- [Openpay BankAccounts Payouts API](https://apis.io/collections/openpay/open-openpay-payouts-api/)
+- [Openpay BankAccounts Plans API](https://apis.io/collections/openpay/open-openpay-plans-api/)
+- [Openpay BankAccounts Subscriptions API](https://apis.io/collections/openpay/open-openpay-subscriptions-api/)
+- [Openpay BankAccounts Tokens API](https://apis.io/collections/openpay/open-openpay-tokens-api/)
+- [Openpay BankAccounts Transfers API](https://apis.io/collections/openpay/open-openpay-transfers-api/)
+- [Openpay BankAccounts Webhooks API](https://apis.io/collections/openpay/open-openpay-webhooks-api/)
 
-### Openpay Customers and Cards API
+#### Security (2)
 
-Create, retrieve, update, list, and delete customers, store and manage their cards at merchant or customer level, and tokenize card data client-side to reduce PCI scope.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://documents.openpay.mx/docs/api](https://documents.openpay.mx/docs/api)
-- **Base URL:** `https://api.openpay.mx/v1`
+- [Openpay Authentication](https://apis.io/security/openpay/openpay-authentication/)
+- [Openpay Domain Security](https://apis.io/security/openpay/openpay-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Customers
-- Cards
-- Tokens
-- Vault
+Published plans, tiers and prices.
 
-#### Properties
+- [Openpay Plans Pricing](https://apis.io/plans/openpay/openpay-plans-pricing/)
 
-- [Documentation](https://documents.openpay.mx/docs/api)
-- [API Reference](https://documents.openpay.mx/docs/api)
-- [OpenAPI](openapi/openpay-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openpay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openpay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Openpay Subscriptions and Plans API
+Published request limits.
 
-Define plans as templates for recurring charges (amount and frequency) and associate customers and cards to those plans through subscriptions, with full create, update, cancel, and list operations.
+- [Openpay Rate Limits](https://apis.io/rate-limits/openpay/openpay-rate-limits/)
 
-- **Human URL:** [https://documents.openpay.mx/docs/api](https://documents.openpay.mx/docs/api)
-- **Base URL:** `https://api.openpay.mx/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Subscriptions
-- Plans
-- Recurring
-- Billing
+- [Openpay Finops](https://apis.io/finops/openpay/openpay-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://documents.openpay.mx/docs/api)
-- [API Reference](https://documents.openpay.mx/docs/api)
-- [OpenAPI](openapi/openpay-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openpay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openpay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Openpay Payouts and Transfers API
-
-Send payouts to registered bank accounts, move funds between customers with transfers, and manage customer bank accounts used as payout destinations.
-
-- **Human URL:** [https://documents.openpay.mx/docs/api](https://documents.openpay.mx/docs/api)
-- **Base URL:** `https://api.openpay.mx/v1`
-
-#### Tags
-
-- Payouts
-- Transfers
-- Bank Accounts
-- SPEI
-
-#### Properties
-
-- [Documentation](https://documents.openpay.mx/docs/api)
-- [API Reference](https://documents.openpay.mx/docs/api)
-- [OpenAPI](openapi/openpay-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openpay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openpay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Openpay Fees API
-
-Charge commission fees to a customer's Openpay balance, typically used in marketplace and split-payment scenarios, and list previously collected fees.
-
-- **Human URL:** [https://documents.openpay.mx/docs/api](https://documents.openpay.mx/docs/api)
-- **Base URL:** `https://api.openpay.mx/v1`
-
-#### Tags
-
-- Fees
-- Commissions
-- Marketplace
-
-#### Properties
-
-- [Documentation](https://documents.openpay.mx/docs/api)
-- [API Reference](https://documents.openpay.mx/docs/api)
-- [OpenAPI](openapi/openpay-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openpay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openpay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Openpay Webhooks API
-
-Register, verify, retrieve, list, and delete webhook endpoints that receive POST notifications for transaction events such as charge.succeeded, charge.refunded, charge.failed, and payout events.
-
-- **Human URL:** [https://documents.openpay.mx/docs/webhooks.html](https://documents.openpay.mx/docs/webhooks.html)
-- **Base URL:** `https://api.openpay.mx/v1`
-
-#### Tags
-
-- Webhooks
-- Notifications
-- Events
-
-#### Properties
-
-- [Documentation](https://documents.openpay.mx/docs/webhooks.html)
-- [API Reference](https://documents.openpay.mx/docs/api)
-- [OpenAPI](openapi/openpay-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openpay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openpay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/open-pay)
-- [LinkedIn](https://www.linkedin.com/company/openpay)
 - [Website](https://www.openpay.mx)
 - [Documentation](https://documents.openpay.mx/docs/api)
-- [Plans](plans/openpay-plans-pricing.yml)
-- [Rate Limits](rate-limits/openpay-rate-limits.yml)
-- [Fin Ops](finops/openpay-finops.yml)
+- [Blog](https://www.openpay.mx/blog/)
+- [GitHub](https://github.com/open-pay)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 21.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 44.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 15.5 |
+| Access clarity | 5.3 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.7** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/openpay/](https://apis.io/providers/openpay/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Openpay: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/openpay/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
